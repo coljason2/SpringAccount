@@ -6,6 +6,8 @@ import javax.servlet.FilterRegistration;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
+import com.opensymphony.sitemesh.webapp.SiteMeshFilter;
+
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
 	@Override
@@ -23,4 +25,11 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
 		return new String[] { "/" };
 	}
 
+	@Override
+	protected Filter[] getServletFilters() {
+
+		CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
+		characterEncodingFilter.setEncoding("UTF-8");
+		return new Filter[] { characterEncodingFilter, new SiteMeshFilter() };
+	}
 }
