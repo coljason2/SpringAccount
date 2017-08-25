@@ -11,5 +11,7 @@
 	<c:url value="http://www.runoob.com" />
 
 	<c:url value="/resources/js/bootstrap.min.js" />
+	
+	
 </body>
 </html>

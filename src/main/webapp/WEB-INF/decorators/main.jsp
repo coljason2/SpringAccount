@@ -16,6 +16,6 @@
 	<div class="container">
 		<dec:body />
 	</div>
-
+	<%@include file="foot.jsp"%>
 </body>
 </html>
