@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <decorators defaultdir="/WEB-INF/decorators/">
 
+	<!-- this pattern will not be accepted -->
 	<excludes>
-		<pattern>/rss/*</pattern>
+		<pattern>/loing</pattern>
+		<pattern>/error</pattern>
 	</excludes>
 
+	<!-- pattern is url pattern not classpass pattern -->
 	<decorator name="default" page="main.jsp">
-		<pattern>/jsp/*</pattern>
+		<pattern>/</pattern>
 	</decorator>
 
 </decorators>

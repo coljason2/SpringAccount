@@ -15,7 +15,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "APP_COMPANY")
-public class Company {
+public class Company implements java.io.Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3135578605335625789L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

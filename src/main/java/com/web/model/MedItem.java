@@ -12,7 +12,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ITEM_MEDICINE")
-public class MedItem {
+public class MedItem implements java.io.Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6558213024133929663L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

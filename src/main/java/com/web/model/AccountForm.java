@@ -15,8 +15,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "APP_FORM")
-public class AccountForm {
+public class AccountForm implements java.io.Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3430816045913258617L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "FORM_ID")

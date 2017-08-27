@@ -10,7 +10,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "APP_HOSPITAL")
-public class Hospital {
+public class Hospital implements java.io.Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6451926421250969545L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

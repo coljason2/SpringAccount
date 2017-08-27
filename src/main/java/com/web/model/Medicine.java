@@ -12,7 +12,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "APP_MEDICINE")
-public class Medicine {
+public class Medicine implements java.io.Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2001463843075946122L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
