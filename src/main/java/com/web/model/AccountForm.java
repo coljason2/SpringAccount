@@ -29,6 +29,9 @@ public class AccountForm implements java.io.Serializable {
 	private String Hospital;
 	@Column(name = "CRE_DATE", nullable = false)
 	private String createDate;
+	@Column(name = "FORM_TOTAL")
+	private Integer total;
+
 	@OneToMany(cascade = { CascadeType.ALL })
 	@JoinColumn(name = "FORM_ID")
 	private List<MedItem> MedItems;
@@ -65,10 +68,22 @@ public class AccountForm implements java.io.Serializable {
 		MedItems = medItems;
 	}
 
+	public Integer getTotal() {
+		return total;
+	}
+
+	public void setTotal(Integer total) {
+		this.total = total;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	@Override
 	public String toString() {
-		return "AccountForm [id=" + id + ", Hospital=" + Hospital + ", createDate=" + createDate + ", MedItems="
-				+ MedItems + "]";
+		return "AccountForm [id=" + id + ", Hospital=" + Hospital + ", createDate=" + createDate + ", total=" + total
+				+ ", MedItems=" + MedItems + "]";
 	}
 
 }

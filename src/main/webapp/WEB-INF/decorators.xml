@@ -3,7 +3,7 @@
 
 	<!-- this pattern will not be accepted -->
 	<excludes>
-		<pattern>/loing</pattern>
+		<pattern>/login</pattern>
 		<pattern>/error</pattern>
 	</excludes>
 

@@ -29,6 +29,8 @@ public class MedItem implements java.io.Serializable {
 	private String inputDate;
 	@Column(name = "MED", nullable = false)
 	private String medicine;
+	@Column(name = "ITEM_COUNT", nullable = false)
+	private Integer itemcount;
 	@Column(name = "IN_COST", nullable = false)
 	private String input_cost;
 	@Column(name = "DIS_1", nullable = false)
