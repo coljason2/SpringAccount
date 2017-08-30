@@ -16,11 +16,9 @@
 
 		<div>
 			<label>選擇藥廠</label> <select id="company">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
+				<c:forEach items="${companys}" var="company">
+					<option value="${company}">${company}</option>
+				</c:forEach>
 			</select>
 		</div>
 		<div>
