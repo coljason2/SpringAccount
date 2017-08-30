@@ -2,6 +2,7 @@ package com.web.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,18 +16,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("bill").password("123456").roles("USER");
-		auth.inMemoryAuthentication().withUser("admin").password("123456").roles("ADMIN");
-		auth.inMemoryAuthentication().withUser("dba").password("123456").roles("ADMIN", "DBA");
+		auth.inMemoryAuthentication().withUser("root").password("123456").roles("USER");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests().antMatchers("/", "/home").permitAll().antMatchers("/admin/**")
-				.access("hasRole('ADMIN')").antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')").and()
-				.formLogin().loginPage("/login").usernameParameter("ssoId").passwordParameter("password").and().csrf()
-				.and().exceptionHandling().accessDeniedPage("/Access_Denied");
+		http.authorizeRequests().antMatchers("/","/home").access("hasRole('USER')")
+		        .and().formLogin()
+				.usernameParameter("ssoId").passwordParameter("password")
+				.loginPage("/login").and().exceptionHandling()
+				.accessDeniedPage("/Access_Denied");
 	}
 
 	@Bean

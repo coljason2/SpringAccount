@@ -11,11 +11,10 @@
 </head>
 <body>
 	<%@include file="nav.jsp"%>
-
-
 	<div class="container">
-		<dec:body />
+		<div class="generic-container">
+			<dec:body />
+		</div>
 	</div>
-
 </body>
 </html>

@@ -5,8 +5,10 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<link href="<c:url value="/resources/ css/bootstrap.min.css" />"
+<link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/app.css" />" rel="stylesheet"
+	type="text/css" />
 
 <!-- Bootstrap core JavaScript -->
 <script type="text/javascript"

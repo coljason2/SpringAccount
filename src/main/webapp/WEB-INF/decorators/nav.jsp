@@ -11,12 +11,12 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a class="nav-link" href="#">新增表單
-						<span class="sr-only">(current)</span>
-				</a></li>
+				<li class="nav-item"><a class="nav-link" href="#">新增表單 </a></li>
 				<li class="nav-item"><a class="nav-link" href="#">藥品管理</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">藥廠管理</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">醫院管理</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="<c:url value="/logout" />">登出</a></li>
 			</ul>
 		</div>
 	</div>
