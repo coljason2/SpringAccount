@@ -13,9 +13,12 @@
 <title>哎呀!好像出了一些問題!</title>
 </head>
 <body>
+
 	<div id="mainWrapper">
-		<h1>Error Page</h1>
-		<h2>網頁錯誤@@!請重新查詢</h2>
+		<div class="container">
+			<h1 class="">Error Page</h1>
+			<h2>網頁錯誤@@!請重新查詢</h2>
+		</div>
 	</div>
 </body>
 </html>

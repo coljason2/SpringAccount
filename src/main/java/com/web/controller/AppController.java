@@ -1,8 +1,12 @@
 package com.web.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.core.Authentication;
@@ -22,6 +26,7 @@ import com.web.service.AccountFormService;
 @RequestMapping("/")
 @SessionAttributes("roles")
 public class AppController {
+	Logger Log = Logger.getLogger(AppController.class);
 
 	@Autowired
 	MessageSource messageSource;
@@ -30,7 +35,7 @@ public class AppController {
 
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String home(ModelMap model) {
-		String[] companys = { "信輝", "永信", "中化" };
+		String[] companys = { "選擇藥廠", "信輝", "永信", "中化" };
 		model.addAttribute("companys", companys);
 
 		// Accountservice.findAllAccountForm();
@@ -50,6 +55,31 @@ public class AppController {
 			new SecurityContextLogoutHandler().logout(request, response, auth);
 		}
 		return "redirect:/login?logout";
+	}
+
+	@RequestMapping(value = { "/AjaxSelectCompany" }, method = RequestMethod.GET)
+	public String AjaxSelectCompany(ModelMap model, String companyId) {
+		List<String> meds = new ArrayList<String>();
+		String company = companyId;
+
+		Log.warn("company is " + company);
+
+		if (company.equals("信輝")) {
+			meds.add("AAA");
+			meds.add("BBB");
+			meds.add("CCC");
+		} else if (company.equals("永信")) {
+			meds.add("111");
+			meds.add("222");
+			meds.add("333");
+		} else {
+			meds.add("eee");
+			meds.add("rrr");
+			meds.add("ttt");
+		}
+		model.addAttribute("meds", meds);
+
+		return "/jsp/home";
 	}
 
 	private String getPrincipal() {

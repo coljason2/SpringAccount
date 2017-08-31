@@ -10,10 +10,8 @@
 <title>新增藥品細項</title>
 </head>
 <body>
-	<form>
-		<input type="text" value="${Hospital}" readonly="readonly"
-			id="Hospital">
-
+	<form class="form-control">
+		<label id="Hospital">${Hospital}</label>
 		<div>
 			<label>選擇藥廠</label> <select id="company">
 				<c:forEach items="${companys}" var="company">
@@ -27,11 +25,7 @@
 
 		<div>
 			<label>選擇藥品</label> <select id="medicine">
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
+				<option>請選擇藥品</option>
 			</select>
 		</div>
 		<div>
@@ -51,5 +45,31 @@
 		</div>
 		<input type="button" value="新增藥品" onclick="AddItem()">
 	</form>
+<script type="text/javascript">
+	$(function() {
+		$("#company").change(
+				function() {
+					var company = $("#company").val();
+					$.ajax({
+						type : "GET",
+						url : "AjaxSelectCompany",
+						data : {
+							companyId : company
+						},
+						dataType : "json",
+						success : function(data) {
+							$("#medicine").empty();
+							$("#medicine").append(
+									"<option value=''>選擇藥品</option>");
+							$.each(data.tasks, function(index, item) {
+								$("#medicine").append(
+										"<option value='"+item.id+"'>"
+												+ item.name + "</option>");
+							});
+						}
+					});
+				});
+	});
+</script>
 </body>
 </html>
