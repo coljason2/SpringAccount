@@ -45,31 +45,35 @@
 		</div>
 		<input type="button" value="新增藥品" onclick="AddItem()">
 	</form>
-<script type="text/javascript">
-	$(function() {
-		$("#company").change(
-				function() {
-					var company = $("#company").val();
-					$.ajax({
-						type : "GET",
-						url : "AjaxSelectCompany",
-						data : {
-							companyId : company
-						},
-						dataType : "json",
-						success : function(data) {
-							$("#medicine").empty();
-							$("#medicine").append(
-									"<option value=''>選擇藥品</option>");
-							$.each(data.tasks, function(index, item) {
+	<script type="text/javascript">
+		$(function() {
+			$("#company").change(
+					function() {
+						var company = $("#company").val();
+						$.ajax({
+							type : "GET",
+							url : "AjaxSelectCompany",
+							data : {
+								companyId : company
+							},
+							dataType : "json",
+							error : function() {
+								alert("fail")
+							},
+							success : function(data) {
+								//alert(data)
+								$("#medicine").empty();
 								$("#medicine").append(
-										"<option value='"+item.id+"'>"
-												+ item.name + "</option>");
-							});
-						}
+										"<option value=''>選擇藥品</option>");
+								$.each(data, function(index, item) {
+									$("#medicine").append(
+											"<option value='"+index+"'>"
+													+ item + "</option>");
+								});
+							}
+						});
 					});
-				});
-	});
-</script>
+		});
+	</script>
 </body>
 </html>

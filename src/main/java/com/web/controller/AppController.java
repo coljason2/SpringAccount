@@ -18,8 +18,10 @@ import org.springframework.ui.ModelMap;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.google.gson.Gson;
 import com.web.service.AccountFormService;
 
 @Controller
@@ -58,7 +60,8 @@ public class AppController {
 	}
 
 	@RequestMapping(value = { "/AjaxSelectCompany" }, method = RequestMethod.GET)
-	public String AjaxSelectCompany(ModelMap model, String companyId) {
+	@ResponseBody
+	public String AjaxSelectCompany(String companyId) {
 		List<String> meds = new ArrayList<String>();
 		String company = companyId;
 
@@ -77,9 +80,10 @@ public class AppController {
 			meds.add("rrr");
 			meds.add("ttt");
 		}
-		model.addAttribute("meds", meds);
 
-		return "/jsp/home";
+		String json = new Gson().toJson(meds);
+
+		return json;
 	}
 
 	private String getPrincipal() {
