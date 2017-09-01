@@ -50,25 +50,31 @@
 			$("#company").change(
 					function() {
 						var company = $("#company").val();
+						var token = $("meta[name='_csrf']").attr("content");
+						var header = $("meta[name='_csrf_header']").attr(
+								"content");
 						$.ajax({
-							type : "GET",
+							type : "POST",
 							url : "AjaxSelectCompany",
 							data : {
 								companyId : company
+
 							},
 							dataType : "json",
+							beforeSend : function(xhr) {
+								xhr.setRequestHeader(header, token);
+							},
 							error : function() {
-								alert("fail")
+								alert("資料傳輸有誤")
 							},
 							success : function(data) {
-								//alert(data)
 								$("#medicine").empty();
 								$("#medicine").append(
 										"<option value=''>選擇藥品</option>");
 								$.each(data, function(index, item) {
 									$("#medicine").append(
-											"<option value='"+index+"'>"
-													+ item + "</option>");
+											"<option value='"+item+"'>" + item
+													+ "</option>");
 								});
 							}
 						});

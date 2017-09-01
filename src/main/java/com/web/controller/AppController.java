@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.google.gson.Gson;
+import com.web.model.Medicine;
 import com.web.service.AccountFormService;
 
 @Controller
@@ -59,9 +60,9 @@ public class AppController {
 		return "redirect:/login?logout";
 	}
 
-	@RequestMapping(value = { "/AjaxSelectCompany" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/AjaxSelectCompany" }, method = RequestMethod.POST)
 	@ResponseBody
-	public String AjaxSelectCompany(String companyId) {
+	public List<String> AjaxSelectCompany(String companyId) {
 		List<String> meds = new ArrayList<String>();
 		String company = companyId;
 
@@ -81,9 +82,7 @@ public class AppController {
 			meds.add("ttt");
 		}
 
-		String json = new Gson().toJson(meds);
-
-		return json;
+		return meds;
 	}
 
 	private String getPrincipal() {
