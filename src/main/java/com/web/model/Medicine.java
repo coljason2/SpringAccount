@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.h2.command.dml.Update;
+
 @Entity
 @Table(name = "APP_MEDICINE")
 public class Medicine implements java.io.Serializable {
@@ -29,6 +31,12 @@ public class Medicine implements java.io.Serializable {
 	@ManyToOne
 	@JoinColumn(name = "COMPANY_ID")
 	private Company company;
+
+	@Column(name = "INP_DATE", nullable = false)
+	private String IputDate;
+
+	@Column(name = "UPADTE", nullable = false)
+	private String Update;
 
 	public Integer getId() {
 		return id;
@@ -52,6 +60,22 @@ public class Medicine implements java.io.Serializable {
 
 	public void setCompany(Company company) {
 		this.company = company;
+	}
+
+	public String getIputDate() {
+		return IputDate;
+	}
+
+	public void setIputDate(String iputDate) {
+		IputDate = iputDate;
+	}
+
+	public String getUpdate() {
+		return Update;
+	}
+
+	public void setUpdate(String update) {
+		Update = update;
 	}
 
 	@Override

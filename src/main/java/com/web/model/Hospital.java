@@ -1,11 +1,15 @@
 package com.web.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -30,6 +34,10 @@ public class Hospital implements java.io.Serializable {
 
 	@Column(name = "UP_NAME", nullable = false)
 	private String updateDate;
+
+	@OneToMany(cascade = { CascadeType.ALL })
+	@Column(name = "UP_NAME")
+	private List<AccountForm> AccountFroms;
 
 	public Integer getId() {
 		return id;
@@ -63,10 +71,18 @@ public class Hospital implements java.io.Serializable {
 		this.updateDate = updateDate;
 	}
 
+	public List<AccountForm> getAccountFroms() {
+		return AccountFroms;
+	}
+
+	public void setAccountFroms(List<AccountForm> accountFroms) {
+		AccountFroms = accountFroms;
+	}
+
 	@Override
 	public String toString() {
 		return "Hospital [id=" + id + ", hos_name=" + hos_name + ", createDate=" + createDate + ", updateDate="
-				+ updateDate + "]";
+				+ updateDate + ", AccountFroms=" + AccountFroms + "]";
 	}
 
 }

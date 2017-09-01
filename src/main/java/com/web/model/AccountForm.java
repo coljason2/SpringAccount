@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -25,8 +26,9 @@ public class AccountForm implements java.io.Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "FORM_ID")
 	private Integer id;
+	@ManyToOne
 	@Column(name = "HOS_NAME", nullable = false)
-	private String Hospital;
+	private Hospital Hospital;
 	@Column(name = "CRE_DATE", nullable = false)
 	private String createDate;
 	@Column(name = "FORM_TOTAL")
@@ -44,11 +46,11 @@ public class AccountForm implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public String getHospital() {
+	public Hospital getHospital() {
 		return Hospital;
 	}
 
-	public void setHospital(String hospital) {
+	public void setHospital(Hospital hospital) {
 		Hospital = hospital;
 	}
 

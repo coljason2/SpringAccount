@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+//藥廠
 @Entity
 @Table(name = "APP_COMPANY")
 public class Company implements java.io.Serializable {

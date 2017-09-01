@@ -10,6 +10,37 @@
 <title>藥品管理</title>
 </head>
 <body>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>藥廠</th>
+				<th>藥品名稱</th>
+				<th>產生日期</th>
+				<th>更新日期</th>
+			</tr>
+		</thead>
+		<c:forEach var="user" items="${meds}">
+			<tr>
+				<td>${com.com_name}</td>
+				<td>${coms.createDate}</td>
+				<td>${coms.updateDate}</td>
+				<td><c:forEach var="Medicines" items="${coms.Medicines}"
+						varStatus="loop">
+						${Medicines}
+    					<c:if test="${not loop.last}">,</c:if>
+					</c:forEach></td>
+				<td><spring:url value="/company/${com.id}" var="listmedsUrl" />
+					<spring:url value="/company/${com.id}/delete" var="deleteUrl" /> <spring:url
+						value="/company/${com.id}/update" var="updateUrl" />
 
+					<button class="btn btn-info"
+						onclick="location.href='${listmedsUrl}'">藥品</button>
+					<button class="btn btn-primary"
+						onclick="location.href='${updateUrl}'">更新</button>
+					<button class="btn btn-danger"
+						onclick="this.disabled=true;post('${deleteUrl}')">刪除</button></td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
 </html>
