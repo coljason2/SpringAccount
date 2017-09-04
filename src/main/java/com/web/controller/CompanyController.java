@@ -54,4 +54,28 @@ public class CompanyController {
 		// model.addAttribute();
 		return "/jsp/company/show";
 	}
+
+	@RequestMapping(value = "/{id}/update", method = RequestMethod.GET)
+	public String updateCompany(@PathVariable int id, Model model) {
+
+		Log.error("showCompany");
+		// model.addAttribute();
+		return "/jsp/company/update";
+	}
+
+	@RequestMapping(value = "/{id}/update", method = RequestMethod.POST)
+	public String updateCompany(Company com, Model model) {
+		// find com from data base
+		// update com set from web
+		// model.addAttribute();
+		return "redirect:/jsp/company/list";
+	}
+
+	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
+	public String deleteCompany(@PathVariable int id, Model model) {
+
+		Log.error("showCompany");
+		// model.addAttribute();
+		return "redirect:/jsp/company/list";
+	}
 }
