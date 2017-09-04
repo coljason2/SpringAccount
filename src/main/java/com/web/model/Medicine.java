@@ -26,7 +26,7 @@ public class Medicine implements java.io.Serializable {
 	private Integer id;
 
 	@Column(name = "NAME", nullable = false)
-	private String name;
+	private String med_name;
 
 	@ManyToOne
 	@JoinColumn(name = "COMPANY_ID")
@@ -47,11 +47,11 @@ public class Medicine implements java.io.Serializable {
 	}
 
 	public String getName() {
-		return name;
+		return med_name;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.med_name = name;
 	}
 
 	public Company getCompany() {
@@ -80,7 +80,7 @@ public class Medicine implements java.io.Serializable {
 
 	@Override
 	public String toString() {
-		return "Medicine [id=" + id + ", name=" + name + ", company=" + company + "]";
+		return "Medicine [id=" + id + ", name=" + med_name + ", company=" + company + "]";
 	}
 
 }

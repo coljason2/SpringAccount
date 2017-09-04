@@ -65,6 +65,7 @@ public class CompanyController {
 
 	@RequestMapping(value = "/{id}/update", method = RequestMethod.POST)
 	public String updateCompany(Company com, Model model) {
+		
 		// find com from data base
 		// update com set from web
 		// model.addAttribute();
