@@ -14,25 +14,23 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>藥廠</th>
+				<th>ID</th>
 				<th>藥品名稱</th>
+				<th>藥廠</th>
 				<th>產生日期</th>
 				<th>更新日期</th>
 			</tr>
 		</thead>
-		<c:forEach var="user" items="${meds}">
+		<c:forEach var="meds" items="${meds}">
 			<tr>
-				<td>${com.com_name}</td>
-				<td>${coms.createDate}</td>
-				<td>${coms.updateDate}</td>
-				<td><c:forEach var="Medicines" items="${coms.Medicines}"
-						varStatus="loop">
-						${Medicines}
-    					<c:if test="${not loop.last}">,</c:if>
-					</c:forEach></td>
-				<td><spring:url value="/company/${com.id}" var="listmedsUrl" />
-					<spring:url value="/company/${com.id}/delete" var="deleteUrl" /> <spring:url
-						value="/company/${com.id}/update" var="updateUrl" />
+				<td>${meds.id}</td>
+				<td>${meds.med_name}</td>
+				<td>${meds.company}</td>
+				<td>${meds.IputDate}</td>
+				<td>${meds.Update}</td>
+				<td><spring:url value="/medicine/${meds.id}" var="listmedsUrl" />
+					<spring:url value="/medicine/${meds.id}/delete" var="deleteUrl" />
+					<spring:url value="/medicine/${meds.id}/update" var="updateUrl" />
 
 					<button class="btn btn-info"
 						onclick="location.href='${listmedsUrl}'">藥品</button>
