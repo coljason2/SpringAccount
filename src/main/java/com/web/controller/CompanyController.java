@@ -4,7 +4,6 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,35 +21,32 @@ public class CompanyController {
 	@Autowired
 	CompnayService compnayService;
 
-	@Autowired
-	Company Company;
-
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listCompany(Model model) {
 
-		Log.error("CompanyController");
+		Log.info("CompanyController");
 		return "/jsp/company/list";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addCompany(Model model) {
 		model.addAttribute(new Company());
-		Log.error("addCompany GET");
+		Log.info("addCompany GET");
 
 		return "/jsp/company/add";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addCompany(Company company) {
-		Log.error("addCompany POST");
+		Log.info("addCompany POST");
 
-		return "redirect:/jsp/company/list";
+		return "redirect:/company/list";
 	}
 
 	@RequestMapping(value = "/{com_name}", method = RequestMethod.GET)
 	public String showCompany(@PathVariable String com_name, Model model) {
 
-		Log.error("showCompany");
+		Log.info("showCompany");
 		// model.addAttribute();
 		return "/jsp/company/show";
 	}
@@ -58,25 +54,25 @@ public class CompanyController {
 	@RequestMapping(value = "/{id}/update", method = RequestMethod.GET)
 	public String updateCompany(@PathVariable int id, Model model) {
 
-		Log.error("showCompany");
+		Log.info("showCompany");
 		// model.addAttribute();
 		return "/jsp/company/update";
 	}
 
 	@RequestMapping(value = "/{id}/update", method = RequestMethod.POST)
 	public String updateCompany(Company com, Model model) {
-		
+
 		// find com from data base
 		// update com set from web
 		// model.addAttribute();
-		return "redirect:/jsp/company/list";
+		return "redirect:/company/list";
 	}
 
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
 	public String deleteCompany(@PathVariable int id, Model model) {
 
-		Log.error("showCompany");
+		Log.info("showCompany");
 		// model.addAttribute();
-		return "redirect:/jsp/company/list";
+		return "redirect:/company/list";
 	}
 }

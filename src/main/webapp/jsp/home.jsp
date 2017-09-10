@@ -10,8 +10,10 @@
 <title>新增藥品細項</title>
 </head>
 <body>
-	<form class="form-control">
-		<label id="Hospital">${Hospital}</label>
+	<form class="form-control" action="form/add" method="post">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
+	    <label id="Hospital">${Hospital}</label>
 		<div>
 			<label>選擇藥廠</label> <select id="company">
 				<c:forEach items="${companys}" var="company">
@@ -43,7 +45,7 @@
 		<div>
 			<label>折讓三</label> <input type="text" id="discount3">
 		</div>
-		<input type="button" value="新增藥品" onclick="AddItem()">
+		<input class="btn btn-primary" type="submit" value="新增藥品">
 	</form>
 	<script type="text/javascript">
 		$(function() {

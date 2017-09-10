@@ -26,7 +26,6 @@ public class AccountForm implements java.io.Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "FORM_ID")
 	private Integer id;
-	@ManyToOne
 	@Column(name = "HOS_NAME", nullable = false)
 	private Hospital Hospital;
 	@Column(name = "CRE_DATE", nullable = false)

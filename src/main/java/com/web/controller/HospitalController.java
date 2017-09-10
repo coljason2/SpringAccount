@@ -18,27 +18,27 @@ public class HospitalController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listHospital(ModelMap model) {
-		Log.error("listHospital");
+		Log.info("listHospital");
 		return "/jsp/hospital/list";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addtHospital(ModelMap model) {
-		Log.error("listHospital");
+		Log.info("listHospital");
 		return "/jsp/hospital/add";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addtHospital(Hospital hos) {
 
-		Log.error("listHospital");
+		Log.info("listHospital");
 		return "/jsp/hospital/add";
 	}
 
 	@RequestMapping(value = "/{hos_name}", method = RequestMethod.GET)
 	public String showHospital(@PathVariable String hos_name, Model model) {
 
-		Log.error("showHospital");
+		Log.info("showHospital");
 		// model.addAttribute();
 		return "/jsp/hospital/show";
 	}
@@ -46,7 +46,7 @@ public class HospitalController {
 	@RequestMapping(value = "/{id}/update", method = RequestMethod.GET)
 	public String updateHospital(@PathVariable int id, Model model) {
 		// display list
-		Log.error("showHospital");
+		Log.info("showHospital");
 		// model.addAttribute();
 
 		return "/jsp/hospital/update";
@@ -64,7 +64,7 @@ public class HospitalController {
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
 	public String deleteHospital(@PathVariable int id, Model model) {
 
-		Log.error("deleteHospital");
+		Log.info("deleteHospital");
 		// model.addAttribute();
 		return "redirect:/jsp/hospital/list";
 	}

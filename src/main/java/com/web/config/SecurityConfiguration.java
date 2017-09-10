@@ -22,11 +22,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests().antMatchers("/","/home").access("hasRole('USER')")
-		        .and().formLogin()
-				.usernameParameter("ssoId").passwordParameter("password")
-				.loginPage("/login").and().exceptionHandling()
-				.accessDeniedPage("/Access_Denied");
+		http.authorizeRequests().antMatchers("/", "/home", "/form/**", "/company/**", "/medicine/**", "/hospital/**")
+				.access("hasRole('USER')").and().formLogin().usernameParameter("ssoId").passwordParameter("password")
+				.loginPage("/login").and().exceptionHandling().accessDeniedPage("/Access_Denied");
 	}
 
 	@Bean

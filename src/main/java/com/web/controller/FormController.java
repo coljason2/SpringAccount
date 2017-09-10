@@ -21,28 +21,28 @@ public class FormController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listForm(ModelMap model) {
 
-		Log.error("FormController");
+		Log.info("FormController");
 		return "/jsp/form/list";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addForm(ModelMap model) {
 
-		Log.error("FormController");
+		Log.info("FormController");
 		return "/jsp/form/add";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addForm(AccountForm accform) {
 
-		Log.error("FormController");
+		Log.info("FormController");
 		return "/jsp/form/add";
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String showForme(@PathVariable int id, Model model) {
 
-		Log.error("showForm");
+		Log.info("showForm");
 		// model.addAttribute();
 		return "/jsp/form/show";
 	}
@@ -50,7 +50,7 @@ public class FormController {
 	@RequestMapping(value = "/{id}/update", method = RequestMethod.GET)
 	public String updateForm(@PathVariable int id, Model model) {
 		// display list
-		Log.error("showForm");
+		Log.info("showForm");
 		// model.addAttribute();
 
 		return "/jsp/form/update";
@@ -68,7 +68,7 @@ public class FormController {
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
 	public String deleteForm(@PathVariable int id, Model model) {
 
-		Log.error("deleteForm");
+		Log.info("deleteForm");
 		// model.addAttribute();
 		return "redirect:/jsp/form/list";
 	}

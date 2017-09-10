@@ -11,6 +11,8 @@
 </head>
 <body>
 	<sf:form method="POST" modelAttribute="company">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
 		<div>
 			<label>藥廠名稱</label>
 			<sf:input path="com_name" />

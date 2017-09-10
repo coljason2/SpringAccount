@@ -10,6 +10,7 @@
 <title>藥品管理</title>
 </head>
 <body>
+	<a class="btn btn-info" href="<c:url value="/medicine/add" />">新增藥品</a>
 	<table class="table table-striped">
 		<thead>
 			<tr>

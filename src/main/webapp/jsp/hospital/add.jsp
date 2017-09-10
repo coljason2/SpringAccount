@@ -10,10 +10,11 @@
 <title>新增藥品細項</title>
 </head>
 <body>
-	<form>
+	<form action="add" method="post">
 		<input type="text" value="${Hospital}" readonly="readonly"
-			id="Hospital">
-
+			id="Hospital" /> 
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
 		<div>
 			<label>選擇藥廠</label> <select id="company">
 				<option>1</option>

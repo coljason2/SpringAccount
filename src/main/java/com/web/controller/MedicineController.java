@@ -21,28 +21,29 @@ public class MedicineController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listMedicine(ModelMap model) {
 
-		Log.error("listMedicine");
+		Log.info("listMedicine");
 		return "/jsp/medicine/list";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addMedicine(ModelMap model) {
 
-		Log.error("listMedicine");
+		Log.info("listMedicine");
 		return "/jsp/medicine/add";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addMedicine(Medicine Medicine) {
 
-		Log.error("listMedicine");
-		return "/jsp/medicine/add";
+		Log.info("-------POST listMedicine---------");
+
+		return "/jsp/medicine/list";
 	}
 
 	@RequestMapping(value = "/{med_name}", method = RequestMethod.GET)
 	public String showMedicine(@PathVariable String med_name, Model model) {
 
-		Log.error("showHospital");
+		Log.info("showHospital");
 		// model.addAttribute();
 		return "/jsp/medicine/show";
 	}
@@ -50,7 +51,7 @@ public class MedicineController {
 	@RequestMapping(value = "/{id}/update", method = RequestMethod.GET)
 	public String updateMedicine(@PathVariable int id, Model model) {
 		// display list
-		Log.error("showMedicine");
+		Log.info("showMedicine");
 		// model.addAttribute();
 
 		return "/jsp/medicine/update";
@@ -68,7 +69,7 @@ public class MedicineController {
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
 	public String deleteMedicine(@PathVariable int id, Model model) {
 
-		Log.error("deleteMedicine");
+		Log.info("deleteMedicine");
 		// model.addAttribute();
 		return "redirect:/jsp/medicine/list";
 	}
