@@ -26,10 +26,10 @@ public class Hospital implements java.io.Serializable {
 	@Column(name = "HOSPITAL_ID")
 	private Integer id;
 
-	@Column(name = "HOS_NAME", nullable = false)
+	@Column(name = "HOS_DATE", nullable = false)
 	private String hos_name;
 
-	@Column(name = "CRE_NAME", nullable = false)
+	@Column(name = "CRE_DATE", nullable = false)
 	private String createDate;
 
 	@Column(name = "UP_NAME", nullable = false)

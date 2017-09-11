@@ -24,7 +24,10 @@ public class CompanyController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listCompany(Model model) {
 
-		Log.info("CompanyController");
+		Log.info("-------CompanyController--------" + compnayService.findAllCompany().toString());
+
+		model.addAttribute("coms", compnayService.findAllCompany());
+
 		return "/jsp/company/list";
 	}
 
@@ -39,6 +42,8 @@ public class CompanyController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addCompany(Company company) {
 		Log.info("addCompany POST");
+		Log.info("----------company--------------" + company.toString());
+		compnayService.AddCompany(company);
 
 		return "redirect:/company/list";
 	}
@@ -71,7 +76,8 @@ public class CompanyController {
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
 	public String deleteCompany(@PathVariable int id, Model model) {
 
-		Log.info("showCompany");
+		Log.info("deleteCompany");
+		compnayService.DeleteCompany(id);
 		// model.addAttribute();
 		return "redirect:/company/list";
 	}

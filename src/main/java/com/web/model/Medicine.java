@@ -11,6 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.h2.command.dml.Update;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.springframework.context.annotation.Lazy;
 
 @Entity
 @Table(name = "APP_MEDICINE")
@@ -29,7 +32,7 @@ public class Medicine implements java.io.Serializable {
 	private String med_name;
 
 	@ManyToOne
-	@JoinColumn(name = "COMPANY_ID")
+	@JoinColumn(name = "COMPANY_ID", insertable = false, updatable = false, nullable = false)
 	private Company company;
 
 	@Column(name = "INP_DATE", nullable = false)

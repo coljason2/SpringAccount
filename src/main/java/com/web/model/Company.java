@@ -5,13 +5,16 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 
 //藥廠
 @Entity
@@ -31,13 +34,15 @@ public class Company implements java.io.Serializable {
 	@Column(name = "COM_NAME", nullable = false)
 	private String com_name;
 
-	@Column(name = "CRE_NAME", nullable = false)
+	@Generated(GenerationTime.INSERT)
+	@Column(name = "CRE_DATE", insertable = false)
 	private String createDate;
 
-	@Column(name = "UP_NAME", nullable = false)
+	@Generated(GenerationTime.ALWAYS)
+	@Column(name = "UP_DATE", insertable = false, updatable = false)
 	private String updateDate;
 
-	@OneToMany(cascade = { CascadeType.ALL })
+	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
 	@JoinColumn(name = "COMPANY_ID")
 	private List<Medicine> Medicines;
 

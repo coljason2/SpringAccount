@@ -2,6 +2,7 @@ package com.web.controller;
 
 import org.apache.log4j.Logger;
 import org.h2.util.New;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -10,12 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import com.web.model.Hospital;
+import com.web.service.HospitalService;
 
 @Controller
 @RequestMapping("/hospital")
 @SessionAttributes("roles")
 public class HospitalController {
 	Logger Log = Logger.getLogger(HospitalController.class);
+
+	@Autowired
+	HospitalService service;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listHospital(ModelMap model) {
@@ -34,7 +39,9 @@ public class HospitalController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addtHospital(Hospital hos) {
 
-		Log.info("listHospital");
+		Log.info("-----------add Hospital post-------------");
+		service.AddHospital(hos);
+
 		return "/jsp/hospital/add";
 	}
 
@@ -67,8 +74,9 @@ public class HospitalController {
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
 	public String deleteHospital(@PathVariable int id, Model model) {
 
-		Log.info("deleteHospital");
-		// model.addAttribute();
+		Log.info("-------------------deleteHospital------------------");
+		service.DeleteHospital(id);
+
 		return "redirect:/jsp/hospital/list";
 	}
 }

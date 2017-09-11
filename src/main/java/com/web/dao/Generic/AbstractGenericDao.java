@@ -34,7 +34,7 @@ public abstract class AbstractGenericDao<T> implements GenericDao<T> {
 		getSession().delete(entity);
 	}
 
-	public void deleteById(long entityId) {
+	public void deleteById(Integer entityId) {
 		T entity = findOne(entityId);
 		delete(entity);
 	}
@@ -43,7 +43,7 @@ public abstract class AbstractGenericDao<T> implements GenericDao<T> {
 		getSession().merge(entity);
 	}
 
-	public T findOne(long id) {
+	public T findOne(Integer id) {
 		return (T) getSession().get(Entity, id);
 	}
 

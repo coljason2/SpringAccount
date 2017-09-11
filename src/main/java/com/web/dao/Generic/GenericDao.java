@@ -3,7 +3,7 @@ package com.web.dao.Generic;
 import java.util.List;
 
 public interface GenericDao<T> {
-	T findOne(final long id);
+	T findOne(final Integer id);
 
 	List<T> findAll();
 
@@ -13,7 +13,7 @@ public interface GenericDao<T> {
 
 	void delete(final T entity);
 
-	void deleteById(final long entityId);
+	void deleteById(final Integer entityId);
 
 	void deleteAll();
 
