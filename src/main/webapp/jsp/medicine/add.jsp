@@ -10,28 +10,24 @@
 <title>新增藥品</title>
 </head>
 <body>
-<<<<<<< HEAD
-	<form action="add" method="post">
+	<sf:form method="POST" modelAttribute="medicine" class="form-control">
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />
-		<div>
-			<label>選擇藥廠</label> <select id="company">
-				<c:forEach items="${companys}" var="company">
-					<option value="${company}">${company}</option>
-				</c:forEach>
-			</select>
-=======
-	<sf:form method="POST" modelAttribute="medicine">
+		<label>選擇藥廠</label>
+		<select id="company">
+			<c:forEach items="${companys}" var="company">
+				<option value="${company}">${company}</option>
+			</c:forEach>
+		</select>
 		<div>
 			<label>藥品名稱</label>
 			<sf:input path="med_name" />
->>>>>>> 53c80bd6ca4606a3da86a670c1493f1407459920
+
 		</div>
 		<div>
 			<label>所屬藥廠</label>
 			<sf:input path="company" />
 		</div>
-<<<<<<< HEAD
 		<div>
 			<label>價格</label> <input type="text" id="input_cost">
 		</div>
@@ -44,11 +40,8 @@
 		<div>
 			<label>折讓三</label> <input type="text" id="discount3">
 		</div>
-		<input type="submit" value="新增藥品">
-	</form>
-=======
-		<input type="submit" value="新增藥品">
+		<input type="submit" value="新增藥品" class="btn btn-primary">
 	</sf:form>
->>>>>>> 53c80bd6ca4606a3da86a670c1493f1407459920
+
 </body>
 </html>

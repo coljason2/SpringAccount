@@ -10,20 +10,16 @@
 <title>新增醫院</title>
 </head>
 <body>
-<<<<<<< HEAD
-	<form action="add" method="post">
+	<sf:form method="POST" modelAttribute="hospital" class="form-control">
 		<input type="text" value="${Hospital}" readonly="readonly"
-			id="Hospital" /> 
+			id="Hospital" />
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />
-=======
-	<sf:form method="POST" modelAttribute="hospital">
->>>>>>> 53c80bd6ca4606a3da86a670c1493f1407459920
 		<div>
 			<label>醫院名稱</label>
 			<sf:input path="hos_name" />
 		</div>
-		<input type="submit" value="新增醫院">
+		<input type="submit" value="新增醫院"  class="btn btn-primary">
 	</sf:form>
 </body>
 </html>

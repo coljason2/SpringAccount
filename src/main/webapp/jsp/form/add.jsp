@@ -52,7 +52,7 @@
 		</div>
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" /> 
-		<input type="submit" value="新增藥品">
+		<input type="submit" value="新增藥品"  class="btn btn-primary">
 	</form>
 </body>
 </html>

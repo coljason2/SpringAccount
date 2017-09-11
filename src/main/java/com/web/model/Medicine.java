@@ -38,6 +38,14 @@ public class Medicine implements java.io.Serializable {
 	@Column(name = "UPADTE", nullable = false)
 	private String Update;
 
+	public String getMed_name() {
+		return med_name;
+	}
+
+	public void setMed_name(String med_name) {
+		this.med_name = med_name;
+	}
+
 	public Integer getId() {
 		return id;
 	}

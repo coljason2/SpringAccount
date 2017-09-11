@@ -1,6 +1,7 @@
 package com.web.controller;
 
 import org.apache.log4j.Logger;
+import org.h2.util.New;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -24,6 +25,8 @@ public class HospitalController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addtHospital(ModelMap model) {
+		model.addAttribute(new Hospital());
+
 		Log.info("listHospital");
 		return "/jsp/hospital/add";
 	}

@@ -10,14 +10,14 @@
 <title>新增藥廠</title>
 </head>
 <body>
-	<sf:form method="POST" modelAttribute="company">
+	<sf:form method="POST" modelAttribute="company" class="form-control">
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />
 		<div>
 			<label>藥廠名稱</label>
 			<sf:input path="com_name" />
 		</div>
-		<input type="submit" value="新增藥廠">
+		<input type="submit" value="新增藥廠" class="btn btn-primary">
 	</sf:form>
 </body>
 </html>
