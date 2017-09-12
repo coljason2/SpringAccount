@@ -1,5 +1,6 @@
 package com.web.model;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -10,23 +11,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.h2.command.dml.Update;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.springframework.context.annotation.Lazy;
-
 @Entity
 @Table(name = "APP_MEDICINE")
-public class Medicine implements java.io.Serializable {
+@AttributeOverride(name = "id", column = @Column(name = "MEDICINE_ID", nullable = false, columnDefinition = "BIGINT UNSIGNED"))
+public class Medicine extends BaseMode {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 2001463843075946122L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
 
 	@Column(name = "NAME", nullable = false)
 	private String med_name;
@@ -35,26 +28,12 @@ public class Medicine implements java.io.Serializable {
 	@JoinColumn(name = "COMPANY_ID", insertable = false, updatable = false, nullable = false)
 	private Company company;
 
-	@Column(name = "INP_DATE", nullable = false)
-	private String IputDate;
-
-	@Column(name = "UPADTE", nullable = false)
-	private String Update;
-
 	public String getMed_name() {
 		return med_name;
 	}
 
 	public void setMed_name(String med_name) {
 		this.med_name = med_name;
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -73,25 +52,9 @@ public class Medicine implements java.io.Serializable {
 		this.company = company;
 	}
 
-	public String getIputDate() {
-		return IputDate;
-	}
-
-	public void setIputDate(String iputDate) {
-		IputDate = iputDate;
-	}
-
-	public String getUpdate() {
-		return Update;
-	}
-
-	public void setUpdate(String update) {
-		Update = update;
-	}
-
 	@Override
 	public String toString() {
-		return "Medicine [id=" + id + ", name=" + med_name + ", company=" + company + "]";
+		return "Medicine [med_name=" + med_name + ", company=" + company + ", id=" + id + "]";
 	}
 
 }

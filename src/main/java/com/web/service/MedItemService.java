@@ -10,7 +10,7 @@ public interface MedItemService {
 
 	public void UpdateMedItem(MedItem mit);
 
-	public void DeleteMedItem(int id);
+	public void DeleteMedItem(Long id);
 
 	public List<MedItem> findAllMedItem();
 }

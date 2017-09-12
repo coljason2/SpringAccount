@@ -74,7 +74,7 @@ public class CompanyController {
 	}
 
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-	public String deleteCompany(@PathVariable int id, Model model) {
+	public String deleteCompany(@PathVariable Long id, Model model) {
 
 		Log.info("deleteCompany");
 		compnayService.DeleteCompany(id);

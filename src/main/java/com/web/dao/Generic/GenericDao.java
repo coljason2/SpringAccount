@@ -2,8 +2,10 @@ package com.web.dao.Generic;
 
 import java.util.List;
 
-public interface GenericDao<T> {
-	T findOne(final Integer id);
+import com.web.model.BaseMode;
+
+public interface GenericDao<T extends BaseMode> {
+	T findOne(final Long id);
 
 	List<T> findAll();
 
@@ -13,7 +15,7 @@ public interface GenericDao<T> {
 
 	void delete(final T entity);
 
-	void deleteById(final Integer entityId);
+	void deleteById(final Long entityId);
 
 	void deleteAll();
 

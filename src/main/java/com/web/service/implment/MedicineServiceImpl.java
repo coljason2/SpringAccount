@@ -20,27 +20,27 @@ public class MedicineServiceImpl implements MedicineService {
 	MedicineDao dao;
 
 	@Override
-	public void AddMedicine(Medicine com) {
+	public void AddMedicine(Medicine med) {
+		dao.AddEntity(med);
+
+	}
+
+	@Override
+	public void UpdateMedicine(Medicine med) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void UpdateMedicine(Medicine com) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void DeleteMedicine(int id) {
-		// TODO Auto-generated method stub
+	public void DeleteMedicine(Long id) {
+		dao.deleteById(id);
 
 	}
 
 	@Override
 	public List<Medicine> findAllMedicine() {
 		// TODO Auto-generated method stub
-		return null;
+		return dao.findAll();
 	}
 
 }

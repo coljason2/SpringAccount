@@ -28,16 +28,12 @@
 				<td>${meds.company}</td>
 				<td>${meds.IputDate}</td>
 				<td>${meds.Update}</td>
-				<td><spring:url value="/medicine/${meds.id}" var="listmedsUrl" />
-					<spring:url value="/medicine/${meds.id}/delete" var="deleteUrl" />
-					<spring:url value="/medicine/${meds.id}/update" var="updateUrl" />
-
-					<button class="btn btn-info"
-						onclick="location.href='${listmedsUrl}'">藥品</button>
-					<button class="btn btn-primary"
-						onclick="location.href='${updateUrl}'">更新</button>
-					<button class="btn btn-danger"
-						onclick="this.disabled=true;post('${deleteUrl}')">刪除</button></td>
+				<td><spring:url value="${meds.id}" var="listmedsUrl" /> <spring:url
+						value="${meds.id}/delete" var="deleteUrl" /> <spring:url
+						value="${meds.id}/update" var="updateUrl" /> <a
+					class="btn btn-info" href="${listmedsUrl}">藥品</a> <a
+					class="btn btn-primary" href="${updateUrl}">更新</a> <a
+					class="btn btn-danger" href="${deleteUrl}">刪除</a></td>
 			</tr>
 		</c:forEach>
 	</table>

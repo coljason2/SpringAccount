@@ -24,7 +24,9 @@ public class HospitalController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listHospital(ModelMap model) {
-		Log.info("listHospital");
+
+		Log.info("---------listHospital--------" + service.findAllHospital().toString());
+		model.addAttribute("hosptials", service.findAllHospital());
 		return "/jsp/hospital/list";
 	}
 
@@ -42,7 +44,7 @@ public class HospitalController {
 		Log.info("-----------add Hospital post-------------");
 		service.AddHospital(hos);
 
-		return "/jsp/hospital/add";
+		return "redirect:/hospital/list";
 	}
 
 	@RequestMapping(value = "/{hos_name}", method = RequestMethod.GET)
@@ -68,15 +70,15 @@ public class HospitalController {
 		// find com from data base
 		// update com set from web
 		// model.addAttribute();
-		return "redirect:/jsp/hospital/list";
+		return "redirect:/hospital/list";
 	}
 
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-	public String deleteHospital(@PathVariable int id, Model model) {
+	public String deleteHospital(@PathVariable Long id, Model model) {
 
 		Log.info("-------------------deleteHospital------------------");
 		service.DeleteHospital(id);
 
-		return "redirect:/jsp/hospital/list";
+		return "redirect:/hospital/list";
 	}
 }

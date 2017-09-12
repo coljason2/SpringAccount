@@ -11,9 +11,9 @@
 <body>
 	<%@include file="nav.jsp"%>
 	<div class="container">
-		<div class="generic-container">
+		<!-- <div class="generic-container"> -->
 			<dec:body />
-		</div>
+		<!-- </div> -->
 	</div>
 </body>
 </html>

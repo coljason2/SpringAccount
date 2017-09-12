@@ -10,9 +10,9 @@ public interface CompnayService {
 
 	public void UpdateCompany(Company com);
 
-	public void DeleteCompany(int id);
+	public void DeleteCompany(Long id);
 
 	public List<Company> findAllCompany();
 
-	public Company findbyOne(int id);
+	public Company findbyOne(Long id);
 }

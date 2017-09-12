@@ -25,20 +25,17 @@
 				<td>${forms.Hospital}</td>
 				<td>${forms.createDate}</td>
 				<td>${forms.total}</td>
-				<td><c:forEach var="medis" items="${hos.MedItems}"
+				<%-- <td><c:forEach var="medis" items="${hos.MedItems}"
 						varStatus="loop">
 						${medis}
     					<c:if test="${not loop.last}">,</c:if>
-					</c:forEach></td>
-				<td><spring:url value="/form/${forms.id}" var="listmedsUrl" />
-					<spring:url value="/form/${forms.id}/delete" var="deleteUrl" />
-					<spring:url value="/form/${forms.id}/update" var="updateUrl" />
-					<button class="btn btn-info"
-						onclick="location.href='${listmedsUrl}'">帳單</button>
-					<button class="btn btn-primary"
-						onclick="location.href='${updateUrl}'">更新</button>
-					<button class="btn btn-danger"
-						onclick="this.disabled=true;post('${deleteUrl}')">刪除</button></td>
+					</c:forEach></td> --%>
+				<td><spring:url value="${forms.id}" var="listmedsUrl" /> <spring:url
+						value="${forms.id}/delete" var="deleteUrl" /> <spring:url
+						value="${forms.id}/update" var="updateUrl" /> <a
+					class="btn btn-info" href="${listmedsUrl}">帳單</a> <a
+					class="btn btn-primary" href="${updateUrl}">更新</a> <a
+					class="btn btn-danger" href="${deleteUrl}">刪除</a></td>
 			</tr>
 		</c:forEach>
 	</table>

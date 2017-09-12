@@ -10,7 +10,9 @@ public interface HospitalService {
 
 	public void UpdateHospital(Hospital hos);
 
-	public void DeleteHospital(int id);
+	public void DeleteHospital(Long id);
 
 	public List<Hospital> findAllHospital();
+
+	public Hospital findbyOne(Long id);
 }

@@ -31,15 +31,21 @@ public class AccountFormServiceImpl implements AccountFormService {
 	}
 
 	@Override
-	public void DeleteAccountForm(int id) {
-		// TODO Auto-generated method stub
+	public void DeleteAccountForm(Long id) {
+		dao.deleteById(id);
 
 	}
 
 	@Override
 	public List<AccountForm> findAllAccountForm() {
 		logger.debug("List All Form ");
-		return null;
+		return dao.findAll();
+	}
+
+	@Override
+	public AccountForm findbyOne(Long id) {
+		// TODO Auto-generated method stub
+		return dao.findOne(id);
 	}
 
 }

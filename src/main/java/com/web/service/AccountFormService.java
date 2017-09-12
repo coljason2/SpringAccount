@@ -10,7 +10,9 @@ public interface AccountFormService {
 
 	public void UpdateAccountForm(AccountForm com);
 
-	public void DeleteAccountForm(int id);
+	public void DeleteAccountForm(Long id);
 
 	public List<AccountForm> findAllAccountForm();
+
+	public AccountForm findbyOne(Long id);
 }

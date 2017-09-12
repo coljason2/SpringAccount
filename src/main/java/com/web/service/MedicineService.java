@@ -10,7 +10,7 @@ public interface MedicineService {
 
 	public void UpdateMedicine(Medicine med);
 
-	public void DeleteMedicine(int id);
+	public void DeleteMedicine(Long id);
 
 	public List<Medicine> findAllMedicine();
 }

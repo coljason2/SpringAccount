@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.web.dao.HospitalDao;
-
+import com.web.model.BaseMode;
 import com.web.model.Hospital;
 import com.web.service.HospitalService;
 
@@ -32,13 +32,19 @@ public class HospitalServiceImpl implements HospitalService {
 
 	}
 
-	public void DeleteHospital(int id) {
+	public void DeleteHospital(Long id) {
 		dao.deleteById(id);
 
 	}
 
 	public List<Hospital> findAllHospital() {
 		return dao.findAll();
+	}
+
+	@Override
+	public Hospital findbyOne(Long id) {
+		// TODO Auto-generated method stub
+		return dao.findOne(id);
 	}
 
 }

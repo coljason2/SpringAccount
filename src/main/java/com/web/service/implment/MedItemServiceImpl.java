@@ -31,7 +31,7 @@ public class MedItemServiceImpl implements MedItemService {
 	}
 
 	@Override
-	public void DeleteMedItem(int id) {
+	public void DeleteMedItem(Long id) {
 		// TODO Auto-generated method stub
 
 	}

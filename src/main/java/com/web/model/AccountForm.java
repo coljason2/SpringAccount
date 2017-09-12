@@ -2,13 +2,11 @@ package com.web.model;
 
 import java.util.List;
 
+import javax.persistence.AttributeOverride;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -16,20 +14,18 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "APP_FORM")
-public class AccountForm implements java.io.Serializable {
+@AttributeOverride(name = "id", column = @Column(name = "FORM_ID", nullable = false, columnDefinition = "BIGINT UNSIGNED"))
+public class AccountForm extends BaseMode {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -3430816045913258617L;
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "FORM_ID")
-	private Integer id;
-	@Column(name = "HOS_NAME", nullable = false)
+	private static final long serialVersionUID = -7440178362536621969L;
+
+	@ManyToOne
+	@JoinColumn(name = "HOSPITAL_ID")
 	private Hospital Hospital;
-	@Column(name = "CRE_DATE", nullable = false)
-	private String createDate;
+
 	@Column(name = "FORM_TOTAL")
 	private Integer total;
 
@@ -37,28 +33,12 @@ public class AccountForm implements java.io.Serializable {
 	@JoinColumn(name = "FORM_ID")
 	private List<MedItem> MedItems;
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 	public Hospital getHospital() {
 		return Hospital;
 	}
 
 	public void setHospital(Hospital hospital) {
 		Hospital = hospital;
-	}
-
-	public String getCreateDate() {
-		return createDate;
-	}
-
-	public void setCreateDate(String createDate) {
-		this.createDate = createDate;
 	}
 
 	public List<MedItem> getMedItems() {
@@ -77,14 +57,9 @@ public class AccountForm implements java.io.Serializable {
 		this.total = total;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 	@Override
 	public String toString() {
-		return "AccountForm [id=" + id + ", Hospital=" + Hospital + ", createDate=" + createDate + ", total=" + total
-				+ ", MedItems=" + MedItems + "]";
+		return "AccountForm [Hospital=" + Hospital + ", total=" + total + ", MedItems=" + MedItems + ", id=" + id + "]";
 	}
 
 }

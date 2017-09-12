@@ -1,6 +1,7 @@
 package com.web.controller;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.web.model.AccountForm;
-import com.web.model.Medicine;
+import com.web.service.AccountFormService;
 
 @Controller
 @RequestMapping("/form")
@@ -18,17 +19,23 @@ import com.web.model.Medicine;
 public class FormController {
 	Logger Log = Logger.getLogger(FormController.class);
 
+	@Autowired
+	AccountFormService Service;
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listForm(ModelMap model) {
 
 		Log.info("FormController");
+
+		model.addAttribute("forms", Service.findAllAccountForm());
 		return "/jsp/form/list";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addForm(ModelMap model) {
-
+		model.addAttribute(new AccountForm());
 		Log.info("FormController");
+
 		return "/jsp/form/add";
 	}
 
@@ -36,7 +43,7 @@ public class FormController {
 	public String addForm(AccountForm accform) {
 
 		Log.info("FormController");
-		return "/jsp/form/add";
+		return "redirect:/jsp/form/list";
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -66,10 +73,10 @@ public class FormController {
 	}
 
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-	public String deleteForm(@PathVariable int id, Model model) {
+	public String deleteForm(@PathVariable Long id, Model model) {
 
 		Log.info("deleteForm");
-		// model.addAttribute();
+		Service.DeleteAccountForm(id);
 		return "redirect:/jsp/form/list";
 	}
 }

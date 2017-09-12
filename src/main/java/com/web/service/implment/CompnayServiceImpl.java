@@ -1,5 +1,6 @@
 package com.web.service.implment;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -20,6 +21,10 @@ public class CompnayServiceImpl implements CompnayService {
 	CompanyDao Dao;
 
 	public void AddCompany(Company com) {
+
+		com.setCreateDate(new Date());
+		com.setUpdateDate(new Date());
+
 		Dao.AddEntity(com);
 
 	}
@@ -35,7 +40,7 @@ public class CompnayServiceImpl implements CompnayService {
 
 	}
 
-	public void DeleteCompany(int id) {
+	public void DeleteCompany(Long id) {
 		logger.debug("Delete one Company...");
 		Dao.deleteById(id);
 	}
@@ -46,7 +51,7 @@ public class CompnayServiceImpl implements CompnayService {
 		return Dao.findAll();
 	}
 
-	public Company findbyOne(int id) {
+	public Company findbyOne(Long id) {
 		logger.debug("Getting one Company...");
 		return Dao.findOne(id);
 	}

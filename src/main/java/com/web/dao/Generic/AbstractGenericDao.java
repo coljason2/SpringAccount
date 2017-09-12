@@ -1,6 +1,7 @@
 package com.web.dao.Generic;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.Date;
 import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -8,9 +9,11 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.web.model.BaseMode;
+
 @Repository("genericDao")
 @SuppressWarnings("unchecked")
-public abstract class AbstractGenericDao<T> implements GenericDao<T> {
+public abstract class AbstractGenericDao<T extends BaseMode> implements GenericDao<T> {
 
 	private Class<T> Entity;
 
@@ -27,6 +30,8 @@ public abstract class AbstractGenericDao<T> implements GenericDao<T> {
 	}
 
 	public void AddEntity(T entity) {
+		entity.setCreateDate(new Date());
+		entity.setUpdateDate(new Date());
 		getSession().persist(entity);
 	}
 
@@ -34,16 +39,17 @@ public abstract class AbstractGenericDao<T> implements GenericDao<T> {
 		getSession().delete(entity);
 	}
 
-	public void deleteById(Integer entityId) {
+	public void deleteById(Long entityId) {
 		T entity = findOne(entityId);
 		delete(entity);
 	}
 
 	public void update(T entity) {
+		entity.setUpdateDate(new Date());
 		getSession().merge(entity);
 	}
 
-	public T findOne(Integer id) {
+	public T findOne(Long id) {
 		return (T) getSession().get(Entity, id);
 	}
 
