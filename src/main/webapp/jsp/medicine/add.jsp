@@ -10,38 +10,21 @@
 <title>新增藥品</title>
 </head>
 <body>
-	<sf:form method="POST" modelAttribute="medicine" class="form-control">
+	<form method="POST" class="form-control" action="add">
 		<input type="hidden" name="${_csrf.parameterName}"
 			value="${_csrf.token}" />
-		<label>選擇藥廠</label>
-		<select id="company">
-			<c:forEach items="${companys}" var="company">
-				<option value="${company}">${company}</option>
-			</c:forEach>
-		</select>
 		<div>
-			<label>藥品名稱</label>
-			<sf:input path="med_name" />
+			<label>藥品名稱</label> <input id="med_name" name="med_name" />
 
 		</div>
 		<div>
-			<label>所屬藥廠</label>
-			<sf:input path="company" />
-		</div>
-		<div>
-			<label>價格</label> <input type="text" id="input_cost">
-		</div>
-		<div>
-			<label>折讓一</label> <input type="text" id="discount1">
-		</div>
-		<div>
-			<label>折讓二</label> <input type="text" id="discount2">
-		</div>
-		<div>
-			<label>折讓三</label> <input type="text" id="discount3">
+			<label>所屬藥廠</label> <select id="company_id" name="company_id">
+				<c:forEach items="${coms}" var="coms">
+					<option value="${coms.id}">${coms.com_name}</option>
+				</c:forEach>
+			</select>
 		</div>
 		<input type="submit" value="新增藥品" class="btn btn-primary">
-	</sf:form>
-
+	</form>
 </body>
 </html>

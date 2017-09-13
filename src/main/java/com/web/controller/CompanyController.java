@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.web.model.Company;
 import com.web.service.CompnayService;
@@ -22,13 +23,12 @@ public class CompanyController {
 	CompnayService compnayService;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String listCompany(Model model) {
+	public ModelAndView listCompany(ModelAndView model) {
 
-		Log.info("-------CompanyController--------" + compnayService.findAllCompany().toString());
+		model = new ModelAndView("/jsp/company/list");
+		model.addObject("coms", compnayService.getAll());
 
-		model.addAttribute("coms", compnayService.findAllCompany());
-
-		return "/jsp/company/list";
+		return model;
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
@@ -41,9 +41,8 @@ public class CompanyController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addCompany(Company company) {
-		Log.info("addCompany POST");
-		Log.info("----------company--------------" + company.toString());
-		compnayService.AddCompany(company);
+
+		compnayService.add(company);
 
 		return "redirect:/company/list";
 	}
@@ -77,7 +76,8 @@ public class CompanyController {
 	public String deleteCompany(@PathVariable Long id, Model model) {
 
 		Log.info("deleteCompany");
-		compnayService.DeleteCompany(id);
+		compnayService.removebyId(id);
+		;
 		// model.addAttribute();
 		return "redirect:/company/list";
 	}

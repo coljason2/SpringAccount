@@ -10,37 +10,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.web.dao.MedicineDao;
 import com.web.model.Medicine;
 import com.web.service.MedicineService;
+import com.web.service.Generic.GenericServiceImpl;
 
 @Service
 @Transactional
-public class MedicineServiceImpl implements MedicineService {
-	final static Logger logger = Logger.getLogger(MedicineServiceImpl.class);
+public class MedicineServiceImpl extends GenericServiceImpl<Medicine> implements MedicineService {
 
 	@Autowired
 	MedicineDao dao;
-
-	@Override
-	public void AddMedicine(Medicine med) {
-		dao.AddEntity(med);
-
-	}
-
-	@Override
-	public void UpdateMedicine(Medicine med) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void DeleteMedicine(Long id) {
-		dao.deleteById(id);
-
-	}
-
-	@Override
-	public List<Medicine> findAllMedicine() {
-		// TODO Auto-generated method stub
-		return dao.findAll();
-	}
 
 }

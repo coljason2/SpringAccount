@@ -25,9 +25,9 @@
 			<tr>
 				<td>${meds.id}</td>
 				<td>${meds.med_name}</td>
-				<td>${meds.company}</td>
-				<td>${meds.IputDate}</td>
-				<td>${meds.Update}</td>
+				<td>${meds.company.com_name}</td>
+				<td>${meds.createDate}</td>
+				<td>${meds.updateDate}</td>
 				<td><spring:url value="${meds.id}" var="listmedsUrl" /> <spring:url
 						value="${meds.id}/delete" var="deleteUrl" /> <spring:url
 						value="${meds.id}/update" var="updateUrl" /> <a

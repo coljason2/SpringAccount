@@ -27,7 +27,7 @@ public class FormController {
 
 		Log.info("FormController");
 
-		model.addAttribute("forms", Service.findAllAccountForm());
+		model.addAttribute("forms", Service.getAll());
 		return "/jsp/form/list";
 	}
 
@@ -76,7 +76,7 @@ public class FormController {
 	public String deleteForm(@PathVariable Long id, Model model) {
 
 		Log.info("deleteForm");
-		Service.DeleteAccountForm(id);
+		Service.removebyId(id);;
 		return "redirect:/jsp/form/list";
 	}
 }

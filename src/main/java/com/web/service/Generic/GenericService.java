@@ -15,4 +15,6 @@ public interface GenericService<T extends BaseMode> {
 	public void update(T entity);
 
 	public void remove(T entity);
+
+	public void removebyId(Long id);
 }

@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.google.gson.Gson;
 import com.web.model.Medicine;
 import com.web.service.AccountFormService;
+import com.web.service.CompnayService;
 
 @Controller
 @RequestMapping("/")
@@ -35,13 +36,14 @@ public class AppController {
 	MessageSource messageSource;
 	@Autowired
 	AccountFormService Accountservice;
+	@Autowired
+	CompnayService comService;
 
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String home(ModelMap model) {
-		String[] companys = { "選擇藥廠", "信輝", "永信", "中化" };
-		model.addAttribute("companys", companys);
 
-		// Accountservice.findAllAccountForm();
+		model.addAttribute("companys", comService.getAll());
+
 		return "/jsp/home";
 	}
 

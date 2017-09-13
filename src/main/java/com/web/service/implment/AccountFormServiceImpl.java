@@ -10,42 +10,13 @@ import org.springframework.transaction.annotation.Transactional;
 import com.web.dao.AccountFormDao;
 import com.web.model.AccountForm;
 import com.web.service.AccountFormService;
+import com.web.service.Generic.GenericServiceImpl;
 
 @Service
 @Transactional
-public class AccountFormServiceImpl implements AccountFormService {
-	final static Logger logger = Logger.getLogger(AccountFormServiceImpl.class);
+public class AccountFormServiceImpl extends GenericServiceImpl<AccountForm> implements AccountFormService {
+
 	@Autowired
 	AccountFormDao dao;
-
-	@Override
-	public void AddAccountForm(AccountForm com) {
-		logger.debug("Add Form");
-
-	}
-
-	@Override
-	public void UpdateAccountForm(AccountForm com) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void DeleteAccountForm(Long id) {
-		dao.deleteById(id);
-
-	}
-
-	@Override
-	public List<AccountForm> findAllAccountForm() {
-		logger.debug("List All Form ");
-		return dao.findAll();
-	}
-
-	@Override
-	public AccountForm findbyOne(Long id) {
-		// TODO Auto-generated method stub
-		return dao.findOne(id);
-	}
 
 }

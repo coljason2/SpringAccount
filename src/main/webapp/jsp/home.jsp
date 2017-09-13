@@ -12,12 +12,11 @@
 <body>
 	<form class="form-control" action="form/add" method="post">
 		<input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" />
-	    <label id="Hospital">${Hospital}</label>
+			value="${_csrf.token}" /> <label id="Hospital">${Hospital}</label>
 		<div>
 			<label>選擇藥廠</label> <select id="company">
 				<c:forEach items="${companys}" var="company">
-					<option value="${company}">${company}</option>
+					<option value="${company.com_name}">${company.com_name}</option>
 				</c:forEach>
 			</select>
 		</div>

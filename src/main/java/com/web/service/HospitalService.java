@@ -1,18 +1,8 @@
 package com.web.service;
 
-import java.util.List;
-
 import com.web.model.Hospital;
+import com.web.service.Generic.GenericService;
 
-public interface HospitalService {
+public interface HospitalService extends GenericService<Hospital> {
 
-	public void AddHospital(Hospital hos);
-
-	public void UpdateHospital(Hospital hos);
-
-	public void DeleteHospital(Long id);
-
-	public List<Hospital> findAllHospital();
-
-	public Hospital findbyOne(Long id);
 }

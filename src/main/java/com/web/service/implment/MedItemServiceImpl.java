@@ -1,45 +1,18 @@
 package com.web.service.implment;
 
-import java.util.List;
-
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.web.dao.MedItemDao;
 import com.web.model.MedItem;
 import com.web.service.MedItemService;
+import com.web.service.Generic.GenericServiceImpl;
 
 @Service
 @Transactional
-public class MedItemServiceImpl implements MedItemService {
-	final static Logger logger = Logger.getLogger(MedItemServiceImpl.class);
+public class MedItemServiceImpl extends GenericServiceImpl<MedItem> implements MedItemService {
 
 	@Autowired
 	MedItemDao dao;
-
-	@Override
-	public void AddMedItem(MedItem com) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void UpdateMedItem(MedItem com) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void DeleteMedItem(Long id) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public List<MedItem> findAllMedItem() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 }

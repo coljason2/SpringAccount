@@ -1,16 +1,8 @@
 package com.web.service;
 
-import java.util.List;
-
 import com.web.model.MedItem;
+import com.web.service.Generic.GenericService;
 
-public interface MedItemService {
+public interface MedItemService extends GenericService<MedItem> {
 
-	public void AddMedItem(MedItem mit);
-
-	public void UpdateMedItem(MedItem mit);
-
-	public void DeleteMedItem(Long id);
-
-	public List<MedItem> findAllMedItem();
 }

@@ -1,16 +1,8 @@
 package com.web.service;
 
-import java.util.List;
-
 import com.web.model.Medicine;
+import com.web.service.Generic.GenericService;
 
-public interface MedicineService {
+public interface MedicineService extends GenericService<Medicine> {
 
-	public void AddMedicine(Medicine med);
-
-	public void UpdateMedicine(Medicine med);
-
-	public void DeleteMedicine(Long id);
-
-	public List<Medicine> findAllMedicine();
 }

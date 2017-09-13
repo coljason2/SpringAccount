@@ -3,6 +3,8 @@ package com.web.dao.Generic;
 import java.lang.reflect.ParameterizedType;
 import java.util.Date;
 import java.util.List;
+
+import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -14,6 +16,8 @@ import com.web.model.BaseMode;
 @Repository("genericDao")
 @SuppressWarnings("unchecked")
 public abstract class AbstractGenericDao<T extends BaseMode> implements GenericDao<T> {
+
+	private Logger logger = Logger.getLogger(this.getClass());
 
 	private Class<T> Entity;
 
@@ -58,6 +62,7 @@ public abstract class AbstractGenericDao<T extends BaseMode> implements GenericD
 	}
 
 	public List<T> findAll() {
+		logger.info("DAO findAll()");
 		return getSession().createQuery("from " + Entity.getName()).list();
 	}
 

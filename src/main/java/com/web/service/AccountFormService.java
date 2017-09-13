@@ -1,18 +1,8 @@
 package com.web.service;
 
-import java.util.List;
-
 import com.web.model.AccountForm;
+import com.web.service.Generic.GenericService;
 
-public interface AccountFormService {
+public interface AccountFormService extends GenericService<AccountForm> {
 
-	public void AddAccountForm(AccountForm com);
-
-	public void UpdateAccountForm(AccountForm com);
-
-	public void DeleteAccountForm(Long id);
-
-	public List<AccountForm> findAllAccountForm();
-
-	public AccountForm findbyOne(Long id);
 }

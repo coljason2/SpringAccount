@@ -25,7 +25,7 @@ public class Medicine extends BaseMode {
 	private String med_name;
 
 	@ManyToOne
-	@JoinColumn(name = "COMPANY_ID", insertable = false, updatable = false, nullable = false)
+	@JoinColumn(name = "COMPANY_ID", nullable = false)
 	private Company company;
 
 	public String getMed_name() {
@@ -54,7 +54,7 @@ public class Medicine extends BaseMode {
 
 	@Override
 	public String toString() {
-		return "Medicine [med_name=" + med_name + ", company=" + company + ", id=" + id + "]";
+		return "Medicine [med_name=" + med_name + ", company=" + company.getCom_name() + ", id=" + id + "]";
 	}
 
 }
