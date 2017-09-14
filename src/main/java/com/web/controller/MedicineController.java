@@ -1,9 +1,6 @@
 package com.web.controller;
 
-import javax.servlet.http.HttpSession;
-
 import org.apache.log4j.Logger;
-import org.h2.util.New;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,11 +49,17 @@ public class MedicineController {
 
 		Medicine med = new Medicine();
 		med.setName(med_name);
-		med.setCompany(comService.findbyOne(company_id));
+
+		if (company_id == null)
+			med.setCompany(new Company());
+		else
+			med.setCompany(comService.findbyOne(company_id));
+
+		Log.info("-----------" + med.toString() + "------------------");
 
 		medService.add(med);
 
-		return "/jsp/medicine/list";
+		return "redirect:/medicine/list";
 	}
 
 	@RequestMapping(value = "/{med_name}", method = RequestMethod.GET)
@@ -78,13 +81,14 @@ public class MedicineController {
 	@RequestMapping(value = "/{id}/update", method = RequestMethod.POST)
 	public String updateMedicine(Medicine med, Model model) {
 
-		return "redirect:/jsp/medicine/list";
+		return "redirect:/medicine/list";
 	}
 
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
 	public String deleteMedicine(@PathVariable Long id, Model model) {
 
 		medService.removebyId(id);
-		return "redirect:/jsp/medicine/list";
+
+		return "redirect:/medicine/list";
 	}
 }

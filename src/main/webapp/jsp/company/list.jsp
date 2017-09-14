@@ -30,13 +30,13 @@
 						${meds}
     					<c:if test="${not loop.last}">,</c:if>
 					</c:forEach></td> --%>
-				<td><spring:url value="${c.id}" var="listmedsUrl" /> <spring:url
+				<td><spring:url value="${c.id}/show" var="listmedsUrl" /> <spring:url
 						value="${c.id}/delete" var="deleteUrl" /> <spring:url
 						value="${c.id}/update" var="updateUrl" />
 					<button class="btn btn-info"
 						onclick="location.href='${listmedsUrl}'">藥品</button>
 					<button class="btn btn-primary"
-						onclick="location.href='${updateUrl}'">更新</button> <%-- <button class="btn btn-danger"
+						onclick="location.href='${updateUrl}'">編輯</button> <%-- <button class="btn btn-danger"
 						onclick="this.disabled=true;post('${deleteUrl}')">刪除</button> --%>
 					<a class="btn btn-danger" href="${deleteUrl}">刪除</a></td>
 			</tr>

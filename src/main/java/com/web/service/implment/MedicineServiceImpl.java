@@ -19,4 +19,10 @@ public class MedicineServiceImpl extends GenericServiceImpl<Medicine> implements
 	@Autowired
 	MedicineDao dao;
 
+	public List<Medicine> findAllByCompanyId(Long id) {
+
+		return dao.findAllByCompanyId(id);
+
+	}
+
 }

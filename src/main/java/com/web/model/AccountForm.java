@@ -29,7 +29,7 @@ public class AccountForm extends BaseMode {
 	@Column(name = "FORM_TOTAL")
 	private Integer total;
 
-	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY, orphanRemoval = true)
 	@JoinColumn(name = "FORM_ID")
 	private List<MedItem> MedItems;
 

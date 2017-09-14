@@ -1,5 +1,9 @@
 package com.web.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +15,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.web.model.Company;
+import com.web.model.Medicine;
 import com.web.service.CompnayService;
+import com.web.service.MedicineService;
 
 @Controller
 @RequestMapping("/company")
@@ -21,6 +27,9 @@ public class CompanyController {
 
 	@Autowired
 	CompnayService compnayService;
+
+	@Autowired
+	MedicineService medService;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView listCompany(ModelAndView model) {
@@ -40,18 +49,24 @@ public class CompanyController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addCompany(Company company) {
+	public String addCompany(HttpServletRequest request, Company company) {
 
+		Log.info(request.getCharacterEncoding());
+		Log.info(request.getParameter("com_name"));
 		compnayService.add(company);
 
 		return "redirect:/company/list";
 	}
 
-	@RequestMapping(value = "/{com_name}", method = RequestMethod.GET)
-	public String showCompany(@PathVariable String com_name, Model model) {
+	@RequestMapping(value = "/{id}/show", method = RequestMethod.GET)
+	public String showCompany(@PathVariable Long id, Model model) {
 
-		Log.info("showCompany");
-		// model.addAttribute();
+		List<Medicine> meds = medService.findAllByCompanyId(id);
+		Company company = compnayService.findbyOne(id);
+
+		model.addAttribute("com", company);
+		model.addAttribute("meds", meds);
+
 		return "/jsp/company/show";
 	}
 

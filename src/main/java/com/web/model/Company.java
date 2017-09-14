@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.IndexColumn;
+
 @Entity
 @Table(name = "APP_COMPANY")
 @AttributeOverride(name = "id", column = @Column(name = "COMPANY_ID", nullable = false, columnDefinition = "BIGINT UNSIGNED"))
@@ -24,7 +26,7 @@ public class Company extends BaseMode {
 	@Column(name = "COM_NAME", nullable = false)
 	private String com_name;
 
-	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "COMPANY_ID")
 	private List<Medicine> Medicines;
 

@@ -1,6 +1,7 @@
 package com.web.model;
 
 import javax.persistence.AttributeOverride;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
@@ -42,7 +43,7 @@ public class MedItem extends BaseMode {
 	@Column(name = "DIS_3")
 	private String discount3;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "FORM_ID", updatable = false, nullable = false)
 	private AccountForm AccountForm;
 

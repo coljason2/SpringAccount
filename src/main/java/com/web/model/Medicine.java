@@ -1,9 +1,10 @@
 package com.web.model;
 
 import javax.persistence.AttributeOverride;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,8 +25,8 @@ public class Medicine extends BaseMode {
 	@Column(name = "NAME", nullable = false)
 	private String med_name;
 
-	@ManyToOne
-	@JoinColumn(name = "COMPANY_ID", nullable = false)
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "COMPANY_ID")
 	private Company company;
 
 	public String getMed_name() {

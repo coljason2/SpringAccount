@@ -14,7 +14,7 @@ import org.springframework.stereotype.Repository;
 import com.web.model.BaseMode;
 
 @Repository("genericDao")
-@SuppressWarnings("unchecked")
+@SuppressWarnings("all")
 public abstract class AbstractGenericDao<T extends BaseMode> implements GenericDao<T> {
 
 	private Logger logger = Logger.getLogger(this.getClass());
