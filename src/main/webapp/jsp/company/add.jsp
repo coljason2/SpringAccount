@@ -16,6 +16,7 @@
 		<div>
 			<label>藥廠名稱</label>
 			<sf:input path="com_name" />
+			<sf:errors path="com_name" cssClass="error" />
 		</div>
 		<input type="submit" value="新增藥廠" class="btn btn-primary">
 	</sf:form>

@@ -25,4 +25,10 @@ public class MedicineServiceImpl extends GenericServiceImpl<Medicine> implements
 
 	}
 
+	@Override
+	public void deleteMedByComId(Long id) {
+		dao.deleteByComId(id);
+
+	}
+
 }

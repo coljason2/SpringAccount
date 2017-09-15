@@ -43,7 +43,7 @@ public class MedItem extends BaseMode {
 	@Column(name = "DIS_3")
 	private String discount3;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "FORM_ID", updatable = false, nullable = false)
 	private AccountForm AccountForm;
 

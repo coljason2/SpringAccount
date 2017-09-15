@@ -2,6 +2,7 @@ package com.web.dao.dao.Impl;
 
 import java.util.List;
 
+import org.apache.commons.logging.Log;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
@@ -24,6 +25,18 @@ public class MedicineDaoImpl extends AbstractGenericDao<Medicine> implements Med
 		}
 		return null;
 
+	}
+
+	@Override
+	public void deleteByComId(Long id) {
+
+		// List<Medicine> meds = findAllByCompanyId(id);
+		// if (meds != null) {
+		String hql = "delete from Medicine m where m.company.id = ?";
+		Query query = this.getSession().createQuery(hql);
+		query.setParameter(0, id);
+		query.executeUpdate();
+		// }
 	}
 
 }

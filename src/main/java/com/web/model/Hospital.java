@@ -9,6 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "APP_HOSPITAL")
@@ -20,10 +23,12 @@ public class Hospital extends BaseMode {
 	 */
 	private static final long serialVersionUID = 6451926421250969545L;
 
+	@NotNull(message = "醫院名稱不能為空值")
+	@NotEmpty(message = "醫院名稱不能為空白")
 	@Column(name = "HOS_NAME", nullable = false)
 	private String hos_name;
 
-	@OneToMany(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+	@OneToMany
 	@Column(name = "HOSPITAL_ID")
 	private List<AccountForm> AccountFroms;
 

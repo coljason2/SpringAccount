@@ -16,6 +16,7 @@
 		<div>
 			<label>醫院名稱</label>
 			<sf:input path="hos_name" />
+			<sf:errors path="hos_name" cssClass="error" />
 		</div>
 		<input type="submit" value="新增醫院" class="btn btn-primary">
 	</sf:form>

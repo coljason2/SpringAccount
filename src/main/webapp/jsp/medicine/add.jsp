@@ -15,6 +15,7 @@
 			value="${_csrf.token}" />
 		<div>
 			<label>藥品名稱</label> <input id="med_name" name="med_name" />
+			<sf:errors path="hos_name" cssClass="error" />
 
 		</div>
 		<div>

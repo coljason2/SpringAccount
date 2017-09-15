@@ -1,11 +1,14 @@
 package com.web.controller;
 
+import javax.validation.Valid;
+
 import org.apache.log4j.Logger;
 import org.h2.util.New;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,12 +41,17 @@ public class HospitalController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addtHospital(Hospital hos) {
+	public String addtHospital(@Valid Hospital hos, BindingResult bindingResult) {
 
-		Log.info("-----------add Hospital post-------------");
-		service.add(hos);
+		if (bindingResult.hasErrors()) {
 
-		return "redirect:/hospital/list";
+			return "/jsp/hospital/add";
+		} else {
+			service.add(hos);
+
+			return "redirect:/hospital/list";
+		}
+
 	}
 
 	@RequestMapping(value = "/{hos_name}", method = RequestMethod.GET)

@@ -3,11 +3,15 @@ package com.web.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 import org.apache.log4j.Logger;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,13 +53,19 @@ public class CompanyController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addCompany(HttpServletRequest request, Company company) {
+	public String addCompany(HttpServletRequest request, @Valid Company company, BindingResult bindingResult) {
 
 		Log.info(request.getCharacterEncoding());
 		Log.info(request.getParameter("com_name"));
-		compnayService.add(company);
 
-		return "redirect:/company/list";
+		if (bindingResult.hasErrors()) {
+			return "/jsp/company/add";
+		} else {
+			compnayService.add(company);
+			return "redirect:/company/list";
+
+		}
+
 	}
 
 	@RequestMapping(value = "/{id}/show", method = RequestMethod.GET)
@@ -90,10 +100,9 @@ public class CompanyController {
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
 	public String deleteCompany(@PathVariable Long id, Model model) {
 
-		Log.info("deleteCompany");
+		medService.deleteMedByComId(id);
 		compnayService.removebyId(id);
-		;
-		// model.addAttribute();
+
 		return "redirect:/company/list";
 	}
 }

@@ -1,10 +1,15 @@
 package com.web.controller;
 
+import javax.validation.Valid;
+
 import org.apache.log4j.Logger;
+import org.h2.util.New;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -38,14 +43,15 @@ public class MedicineController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addMedicine(ModelMap model) {
-
+		model.addAttribute(new Medicine());
 		model.addAttribute("coms", comService.getAll());
 
 		return "/jsp/medicine/add";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addMedicine(@RequestParam String med_name, @RequestParam Long company_id) {
+	public String addMedicine(@Valid @RequestParam String med_name, BindingResult NameResult,
+			@RequestParam Long company_id) {
 
 		Medicine med = new Medicine();
 		med.setName(med_name);

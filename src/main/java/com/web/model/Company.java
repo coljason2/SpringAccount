@@ -10,8 +10,10 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.IndexColumn;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "APP_COMPANY")
@@ -23,10 +25,12 @@ public class Company extends BaseMode {
 	 */
 	private static final long serialVersionUID = -3135578605335625789L;
 
+	@NotNull(message = "藥廠名稱不能為空白!")
+	@NotEmpty(message = "藥廠名稱不能為空白!")
 	@Column(name = "COM_NAME", nullable = false)
 	private String com_name;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany
 	@JoinColumn(name = "COMPANY_ID")
 	private List<Medicine> Medicines;
 

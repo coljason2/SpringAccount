@@ -8,4 +8,6 @@ import com.web.model.Medicine;
 public interface MedicineDao extends GenericDao<Medicine> {
 
 	public List<Medicine> findAllByCompanyId(Long id);
+
+	public void deleteByComId(Long id);
 }

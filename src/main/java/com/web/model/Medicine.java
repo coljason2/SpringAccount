@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 @Table(name = "APP_MEDICINE")
 @AttributeOverride(name = "id", column = @Column(name = "MEDICINE_ID", nullable = false, columnDefinition = "BIGINT UNSIGNED"))
@@ -22,10 +24,11 @@ public class Medicine extends BaseMode {
 	 */
 	private static final long serialVersionUID = 2001463843075946122L;
 
+	@NotEmpty(message = "不能空白")
 	@Column(name = "NAME", nullable = false)
 	private String med_name;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "COMPANY_ID")
 	private Company company;
 
