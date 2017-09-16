@@ -1,6 +1,7 @@
 package com.web.service.Generic;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,37 +21,31 @@ public abstract class GenericServiceImpl<T extends BaseMode> implements GenericS
 
 	@Override
 	public List<T> getAll() {
-		logger.info("getAll()");
 		return genericDao.findAll();
 	}
 
 	@Override
-	public T findbyOne(Long id) {
-		logger.info("findbyOne" + id);
+	public T findbyOne(UUID id) {
 		return genericDao.findOne(id);
 	}
 
 	@Override
 	public void add(T entity) {
-		logger.info("findbyOne" + entity.toString());
 		genericDao.AddEntity(entity);
 	}
 
 	@Override
 	public void update(T entity) {
-		logger.info("update" + entity.toString());
 		genericDao.update(entity);
 	}
 
 	@Override
 	public void remove(T entity) {
-		logger.info("remove" + entity.toString());
 		genericDao.delete(entity);
 	}
 
 	@Override
-	public void removebyId(Long id) {
-		logger.info("removebyId" + id);
+	public void removebyId(UUID id) {
 		genericDao.deleteById(id);
 	}
 

@@ -19,9 +19,9 @@
 				<th>藥品項目</th>
 			</tr>
 		</thead>
-		<c:forEach var="forms" items="${forms}">
+		<c:forEach var="forms" items="${forms}" varStatus="status">
 			<tr>
-				<td>${forms.id}</td>
+				<td>${status.index}</td>
 				<td>${forms.Hospital}</td>
 				<td>${forms.createDate}</td>
 				<td>${forms.total}</td>

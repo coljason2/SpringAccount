@@ -1,15 +1,13 @@
 package com.web.controller;
 
-import javax.validation.Valid;
-
+import java.util.Collections;
+import java.util.List;
+import java.util.UUID;
 import org.apache.log4j.Logger;
-import org.h2.util.New;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -35,37 +33,47 @@ public class MedicineController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listMedicine(ModelMap model) {
+		List<Medicine> meds = medService.getAll();
 
-		model.addAttribute("meds", medService.getAll());
+		Collections.sort(meds, new Medicine());
+		model.addAttribute("meds", meds);
 
 		return "/jsp/medicine/list";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
-	public String addMedicine(ModelMap model) {
-		model.addAttribute(new Medicine());
+	public String addMedicine(Model model) {
+
 		model.addAttribute("coms", comService.getAll());
 
 		return "/jsp/medicine/add";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addMedicine(@Valid @RequestParam String med_name, BindingResult NameResult,
-			@RequestParam Long company_id) {
+	public String addMedicine(@RequestParam String med_name, @RequestParam UUID company_id, Model model) {
 
-		Medicine med = new Medicine();
-		med.setName(med_name);
+		if (med_name == null || med_name.equals("")) {
 
-		if (company_id == null)
-			med.setCompany(new Company());
-		else
-			med.setCompany(comService.findbyOne(company_id));
+			model.addAttribute("error", "藥品名稱不能為空白");
+			model.addAttribute("coms", comService.getAll());
 
-		Log.info("-----------" + med.toString() + "------------------");
+			return "/jsp/medicine/add";
+		} else {
 
-		medService.add(med);
+			Medicine med = new Medicine();
+			med.setName(med_name);
 
-		return "redirect:/medicine/list";
+			if (company_id == null)
+				med.setCompany(new Company());
+			else
+				med.setCompany(comService.findbyOne(company_id));
+
+			Log.info("-----------" + med.toString() + "------------------");
+
+			medService.add(med);
+
+			return "redirect:/medicine/list";
+		}
 	}
 
 	@RequestMapping(value = "/{med_name}", method = RequestMethod.GET)
@@ -77,21 +85,35 @@ public class MedicineController {
 	}
 
 	@RequestMapping(value = "/{id}/update", method = RequestMethod.GET)
-	public String updateMedicine(@PathVariable int id, Model model) {
+	public String updateMedicine(@PathVariable UUID id, Model model) {
 
-		Log.info("showMedicine");
+		model.addAttribute("med", medService.findbyOne(id));
+		model.addAttribute("coms", comService.getAll());
 
-		return "/jsp/medicine/update";
+		return "/jsp/medicine/edit";
 	}
 
 	@RequestMapping(value = "/{id}/update", method = RequestMethod.POST)
-	public String updateMedicine(Medicine med, Model model) {
+	public String updateMedicine(Model model, @RequestParam UUID med_id, @RequestParam String med_name,
+			@RequestParam UUID company_id, @RequestParam String now_company) {
+
+		Medicine medicine = medService.findbyOne(med_id);
+		medicine.setMed_name(med_name);
+		Company company = comService.findbyOne(company_id);
+
+		if (!company.getCom_name().equals(now_company)) {
+			medicine.setCompany(company);
+		} else {
+			medicine.setCompany(medicine.getCompany());
+		}
+
+		medService.update(medicine);
 
 		return "redirect:/medicine/list";
 	}
 
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-	public String deleteMedicine(@PathVariable Long id, Model model) {
+	public String deleteMedicine(@PathVariable UUID id, Model model) {
 
 		medService.removebyId(id);
 

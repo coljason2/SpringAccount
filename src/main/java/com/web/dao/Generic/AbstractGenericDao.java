@@ -3,6 +3,7 @@ package com.web.dao.Generic;
 import java.lang.reflect.ParameterizedType;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.log4j.Logger;
 import org.hibernate.Criteria;
@@ -43,7 +44,7 @@ public abstract class AbstractGenericDao<T extends BaseMode> implements GenericD
 		getSession().delete(entity);
 	}
 
-	public void deleteById(Long entityId) {
+	public void deleteById(UUID entityId) {
 		T entity = findOne(entityId);
 		delete(entity);
 	}
@@ -53,7 +54,7 @@ public abstract class AbstractGenericDao<T extends BaseMode> implements GenericD
 		getSession().merge(entity);
 	}
 
-	public T findOne(Long id) {
+	public T findOne(UUID id) {
 		return (T) getSession().get(Entity, id);
 	}
 

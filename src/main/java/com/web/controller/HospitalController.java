@@ -1,5 +1,7 @@
 package com.web.controller;
 
+import java.util.UUID;
+
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -12,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import com.web.model.Hospital;
 import com.web.service.HospitalService;
@@ -62,26 +65,26 @@ public class HospitalController {
 		return "/jsp/hospital/show";
 	}
 
-	@RequestMapping(value = "/{id}/update", method = RequestMethod.GET)
-	public String updateHospital(@PathVariable int id, Model model) {
-		// display list
-		Log.info("showHospital");
-		// model.addAttribute();
+	@RequestMapping(value = "/{hos_id}/update", method = RequestMethod.GET)
+	public String updateHospital(@PathVariable UUID hos_id, Model model) {
 
-		return "/jsp/hospital/update";
+		model.addAttribute("hos", service.findbyOne(hos_id));
+
+		return "/jsp/hospital/edit";
 	}
 
 	@RequestMapping(value = "/{id}/update", method = RequestMethod.POST)
-	public String updateHospital(Hospital hos, Model model) {
+	public String updateHospital(@RequestParam UUID hos_id, @RequestParam String hos_name) {
 
-		// find com from data base
-		// update com set from web
-		// model.addAttribute();
+		Hospital hospital = service.findbyOne(hos_id);
+		hospital.setHos_name(hos_name);
+		service.update(hospital);
+
 		return "redirect:/hospital/list";
 	}
 
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-	public String deleteHospital(@PathVariable Long id, Model model) {
+	public String deleteHospital(@PathVariable UUID id, Model model) {
 
 		Log.info("-------------------deleteHospital------------------");
 		service.removebyId(id);

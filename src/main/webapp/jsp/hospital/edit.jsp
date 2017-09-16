@@ -10,6 +10,14 @@
 <title>${hos.hos_name }</title>
 </head>
 <body>
-
+	<form method="POST" class="form-control">
+		<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" /> <input type="hidden" name="hos_id"
+			value="${hos.id}" />
+		<div>
+			<label>藥廠名稱</label> <input value="${hos.hos_name}" name="hos_name" />
+		</div>
+		<input type="submit" value="確認修改" class="btn btn-primary">
+	</form>
 </body>
 </html>

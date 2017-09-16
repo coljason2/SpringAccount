@@ -62,4 +62,10 @@ public class AccountForm extends BaseMode {
 		return "AccountForm [Hospital=" + Hospital + ", total=" + total + ", MedItems=" + MedItems + ", id=" + id + "]";
 	}
 
+	@Override
+	public int compare(Object o1, Object o2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

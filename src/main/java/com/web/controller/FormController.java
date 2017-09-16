@@ -1,5 +1,7 @@
 package com.web.controller;
 
+import java.util.UUID;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -73,7 +75,7 @@ public class FormController {
 	}
 
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-	public String deleteForm(@PathVariable Long id, Model model) {
+	public String deleteForm(@PathVariable UUID id, Model model) {
 
 		Log.info("deleteForm");
 		Service.removebyId(id);;

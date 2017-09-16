@@ -1,6 +1,7 @@
 package com.web.service.implment;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,14 @@ public class MedicineServiceImpl extends GenericServiceImpl<Medicine> implements
 	@Autowired
 	MedicineDao dao;
 
-	public List<Medicine> findAllByCompanyId(Long id) {
+	public List<Medicine> findAllByCompanyId(UUID id) {
 
 		return dao.findAllByCompanyId(id);
 
 	}
 
 	@Override
-	public void deleteMedByComId(Long id) {
+	public void deleteMedByComId(UUID id) {
 		dao.deleteByComId(id);
 
 	}

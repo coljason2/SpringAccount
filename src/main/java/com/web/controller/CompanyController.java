@@ -1,6 +1,7 @@
 package com.web.controller;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -12,9 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -46,17 +49,14 @@ public class CompanyController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addCompany(Model model) {
+
 		model.addAttribute(new Company());
-		Log.info("addCompany GET");
 
 		return "/jsp/company/add";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addCompany(HttpServletRequest request, @Valid Company company, BindingResult bindingResult) {
-
-		Log.info(request.getCharacterEncoding());
-		Log.info(request.getParameter("com_name"));
+	public String addCompany(@Valid Company company, BindingResult bindingResult) {
 
 		if (bindingResult.hasErrors()) {
 			return "/jsp/company/add";
@@ -69,7 +69,7 @@ public class CompanyController {
 	}
 
 	@RequestMapping(value = "/{id}/show", method = RequestMethod.GET)
-	public String showCompany(@PathVariable Long id, Model model) {
+	public String showCompany(@PathVariable UUID id, Model model) {
 
 		List<Medicine> meds = medService.findAllByCompanyId(id);
 		Company company = compnayService.findbyOne(id);
@@ -81,28 +81,37 @@ public class CompanyController {
 	}
 
 	@RequestMapping(value = "/{id}/update", method = RequestMethod.GET)
-	public String updateCompany(@PathVariable int id, Model model) {
+	public String updateCompany(@PathVariable UUID id, Model model) {
 
-		Log.info("showCompany");
-		// model.addAttribute();
-		return "/jsp/company/update";
+		model.addAttribute("com", compnayService.findbyOne(id));
+
+		return "/jsp/company/edit";
 	}
 
 	@RequestMapping(value = "/{id}/update", method = RequestMethod.POST)
-	public String updateCompany(Company com, Model model) {
+	public String updateCompany(@RequestParam UUID id, @RequestParam String com_name) {
 
-		// find com from data base
-		// update com set from web
-		// model.addAttribute();
+		Company company = compnayService.findbyOne(id);
+		company.setCom_name(com_name);
+		compnayService.update(company);
+
 		return "redirect:/company/list";
 	}
 
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-	public String deleteCompany(@PathVariable Long id, Model model) {
+	public String deleteCompany(@PathVariable UUID id, Model model) {
 
 		medService.deleteMedByComId(id);
 		compnayService.removebyId(id);
 
 		return "redirect:/company/list";
+	}
+
+	@RequestMapping(value = "/{com_id}/{med_id}/delete", method = RequestMethod.GET)
+	public String deleteMedicine(@PathVariable UUID com_id, @PathVariable UUID med_id, Model model) {
+
+		medService.removebyId(med_id);
+
+		return "redirect:/company/" + com_id + "/show";
 	}
 }

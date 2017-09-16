@@ -19,20 +19,19 @@
 				<th>藥廠</th>
 				<th>產生日期</th>
 				<th>更新日期</th>
+				<th>功能選項</th>
 			</tr>
 		</thead>
-		<c:forEach var="meds" items="${meds}">
+		<c:forEach var="meds" items="${meds}" varStatus="status">
 			<tr>
-				<td>${meds.id}</td>
+				<td>${status.index}</td>
 				<td>${meds.med_name}</td>
 				<td>${meds.company.com_name}</td>
 				<td>${meds.createDate}</td>
 				<td>${meds.updateDate}</td>
-				<td><spring:url value="${meds.id}" var="listmedsUrl" /> <spring:url
-						value="${meds.id}/delete" var="deleteUrl" /> <spring:url
+				<td><spring:url value="${meds.id}/delete" var="deleteUrl" /> <spring:url
 						value="${meds.id}/update" var="updateUrl" /> <a
-					class="btn btn-info" href="${listmedsUrl}">藥品</a> <a
-					class="btn btn-primary" href="${updateUrl}">更新</a> <a
+					class="btn btn-primary" href="${updateUrl}">編輯</a> <a
 					class="btn btn-danger" href="${deleteUrl}">刪除</a></td>
 			</tr>
 		</c:forEach>

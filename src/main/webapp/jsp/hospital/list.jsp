@@ -21,25 +21,20 @@
 				<th>醫院</th>
 				<th>產生日期</th>
 				<th>更新日期</th>
-				<th>帳單</th>
+				<th>功能選單</th>
 			</tr>
 		</thead>
-		<c:forEach var="hos" items="${hosptials}">
+		<c:forEach var="hos" items="${hosptials}" varStatus="status">
 			<tr>
-				<td>${hos.id}</td>
+				<td>${status.index}</td>
 				<td>${hos.hos_name}</td>
 				<td>${hos.createDate}</td>
 				<td>${hos.updateDate}</td>
-				<%-- <td><c:forEach var="forms" items="${hos.AccountFroms}"
-						varStatus="loop">
-						${forms}
-    					<c:if test="${not loop.last}">,</c:if>
-					</c:forEach></td> --%>
-				<td><spring:url value="${hos.id}" var="listmedsUrl" /> <spring:url
-						value="${hos.id}/delete" var="deleteUrl" /> <spring:url
+				<td><spring:url value="${hos.id}/forms" var="listFormsUrl" />
+					<spring:url value="${hos.id}/delete" var="deleteUrl" /> <spring:url
 						value="${hos.id}/update" var="updateUrl" /> <a
-					class="btn btn-info" href="${listmedsUrl}">帳單</a> <a
-					class="btn btn-primary" href="${updateUrl}">更新</a> <a
+					class="btn btn-info" href="${listFormsUrl}">帳單</a> <a
+					class="btn btn-primary" href="${updateUrl}">編輯</a> <a
 					class="btn btn-danger" href="${deleteUrl}">刪除</a></td>
 			</tr>
 		</c:forEach>

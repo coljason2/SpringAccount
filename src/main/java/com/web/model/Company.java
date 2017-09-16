@@ -17,7 +17,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "APP_COMPANY")
-@AttributeOverride(name = "id", column = @Column(name = "COMPANY_ID", nullable = false, columnDefinition = "BIGINT UNSIGNED"))
+@AttributeOverride(name = "id", column = @Column(name = "COMPANY_ID", nullable = false))
 public class Company extends BaseMode {
 
 	/**
@@ -53,6 +53,12 @@ public class Company extends BaseMode {
 	@Override
 	public String toString() {
 		return "Company [id=" + id + ", com_name=" + com_name + ", Medicines=" + Medicines + "]";
+	}
+
+	@Override
+	public int compare(Object o1, Object o2) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.web.service.Generic;
 
 import java.util.List;
+import java.util.UUID;
 
 import com.web.model.BaseMode;
 
@@ -8,7 +9,7 @@ public interface GenericService<T extends BaseMode> {
 
 	public List<T> getAll();
 
-	public T findbyOne(Long id);
+	public T findbyOne(UUID id);
 
 	public void add(T entity);
 
@@ -16,5 +17,5 @@ public interface GenericService<T extends BaseMode> {
 
 	public void remove(T entity);
 
-	public void removebyId(Long id);
+	public void removebyId(UUID id);
 }

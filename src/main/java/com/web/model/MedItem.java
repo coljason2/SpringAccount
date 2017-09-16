@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ITEM_MEDICINE")
-@AttributeOverride(name = "id", column = @Column(name = "MEDITEM_ID", nullable = false, columnDefinition = "BIGINT UNSIGNED"))
+@AttributeOverride(name = "id", column = @Column(name = "MEDITEM_ID", nullable = false))
 public class MedItem extends BaseMode {
 
 	/**
@@ -108,5 +108,11 @@ public class MedItem extends BaseMode {
 		return "MedItem [company=" + company + ", medicine=" + medicine + ", itemcount=" + itemcount + ", input_cost="
 				+ input_cost + ", discount1=" + discount1 + ", discount2=" + discount2 + ", discount3=" + discount3
 				+ ", AccountForm=" + AccountForm + ", id=" + id + "]";
+	}
+
+	@Override
+	public int compare(Object o1, Object o2) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

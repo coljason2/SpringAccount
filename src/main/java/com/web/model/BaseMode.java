@@ -1,12 +1,13 @@
 package com.web.model;
 
 import java.io.Serializable;
+import java.util.Comparator;
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.PrePersist;
@@ -15,18 +16,20 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @MappedSuperclass
-public abstract class BaseMode implements Serializable {
+public abstract class BaseMode implements Serializable, Comparator<Object> {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Basic(optional = false)
-	@Column(name = "id", nullable = false, columnDefinition = "BIGINT UNSIGNED")
-	protected Long id;
+	@GeneratedValue(generator = "UUID")
+	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+	@Column(name = "id", updatable = false, nullable = false, columnDefinition = "uuid")
+	protected UUID id;
 
 	@Column(name = "version")
 	@Version
@@ -40,11 +43,12 @@ public abstract class BaseMode implements Serializable {
 	@Column(name = "UP_DATE")
 	private Date updateDate;
 
-	public Date getCreateDate() {
-		return createDate;
+	public String getCreateDate() {
+		String date = createDate + "";
+		return date.substring(0, 10);
 	}
 
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
@@ -57,8 +61,10 @@ public abstract class BaseMode implements Serializable {
 		this.createDate = createDate;
 	}
 
-	public Date getUpdateDate() {
-		return updateDate;
+	public String getUpdateDate() {
+
+		String date = updateDate + "";
+		return date.substring(0, 10);
 	}
 
 	@PreUpdate

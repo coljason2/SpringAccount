@@ -16,7 +16,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "APP_MEDICINE")
-@AttributeOverride(name = "id", column = @Column(name = "MEDICINE_ID", nullable = false, columnDefinition = "BIGINT UNSIGNED"))
+@AttributeOverride(name = "id", column = @Column(name = "MEDICINE_ID", nullable = false))
 public class Medicine extends BaseMode {
 
 	/**
@@ -24,7 +24,6 @@ public class Medicine extends BaseMode {
 	 */
 	private static final long serialVersionUID = 2001463843075946122L;
 
-	@NotEmpty(message = "不能空白")
 	@Column(name = "NAME", nullable = false)
 	private String med_name;
 
@@ -59,6 +58,14 @@ public class Medicine extends BaseMode {
 	@Override
 	public String toString() {
 		return "Medicine [med_name=" + med_name + ", company=" + company.getCom_name() + ", id=" + id + "]";
+	}
+
+	@Override
+	public int compare(Object arg0, Object arg1) {
+		Medicine o1 = (Medicine) arg0;
+		Medicine o2 = (Medicine) arg1;
+		return o1.getCompany().getId().compareTo(o2.getCompany().getId());
+
 	}
 
 }

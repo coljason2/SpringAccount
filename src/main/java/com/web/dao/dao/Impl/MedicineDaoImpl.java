@@ -1,8 +1,7 @@
 package com.web.dao.dao.Impl;
 
 import java.util.List;
-
-import org.apache.commons.logging.Log;
+import java.util.UUID;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +13,7 @@ import com.web.model.Medicine;
 public class MedicineDaoImpl extends AbstractGenericDao<Medicine> implements MedicineDao {
 
 	@Override
-	public List<Medicine> findAllByCompanyId(Long id) {
+	public List<Medicine> findAllByCompanyId(UUID id) {
 
 		String hql = "from Medicine m where m.company.id = ?";
 		Query query = this.getSession().createQuery(hql);
@@ -28,11 +27,11 @@ public class MedicineDaoImpl extends AbstractGenericDao<Medicine> implements Med
 	}
 
 	@Override
-	public void deleteByComId(Long id) {
+	public void deleteByComId(UUID id) {
 
 		// List<Medicine> meds = findAllByCompanyId(id);
 		// if (meds != null) {
-		String hql = "delete from Medicine m where m.company.id = ?";
+		String hql = "delete from Medicine m  where m.company.id = ?";
 		Query query = this.getSession().createQuery(hql);
 		query.setParameter(0, id);
 		query.executeUpdate();
