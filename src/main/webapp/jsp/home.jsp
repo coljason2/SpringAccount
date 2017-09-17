@@ -1,86 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>新增藥品細項</title>
 </head>
 <body>
-	<form class="form-control" action="form/add" method="post">
-		<input type="hidden" name="${_csrf.parameterName}"
-			value="${_csrf.token}" /> <label id="Hospital">${Hospital}</label>
+	<form class="form-control">
+		<!-- Form Name -->
+		<legend>記帳表單</legend>
+		<!-- Select Basic -->
 		<div>
-			<label>選擇藥廠</label> <select id="company">
+			<label>藥廠：</label> <select id="company">
 				<c:forEach items="${companys}" var="company">
 					<option value="${company.com_name}">${company.com_name}</option>
 				</c:forEach>
-			</select>
-		</div>
-		<div>
-			<label>進貨日期</label> <input value="2011-08-19" id="inputDate">
-		</div>
-
-		<div>
-			<label>選擇藥品</label> <select id="medicine">
+			</select> <label>藥品：</label> <select id="medicine">
 				<option>請選擇藥品</option>
-			</select>
+			</select> <label>進貨日期：</label> <input id="inputday" name="inputday"
+				placeholder="2017/01/01" type="text">
 		</div>
+		<!-- Text input-->
 		<div>
-			<label>數量</label> <input type="text" id="itemcount">
+			<label>價格：</label> <input id="cost" name="cost" placeholder="進貨價格"
+				type="text"> <label>數量：</label> <input id="count"
+				name="count" placeholder="藥品數量" type="text">
 		</div>
-		<div>
-			<label>價格</label> <input type="text" id="input_cost">
-		</div>
-		<div>
-			<label>折讓一</label> <input type="text" id="discount1">
-		</div>
-		<div>
-			<label>折讓二</label> <input type="text" id="discount2">
-		</div>
-		<div>
-			<label>折讓三</label> <input type="text" id="discount3">
-		</div>
-		<input class="btn btn-primary" type="submit" value="新增藥品">
-	</form>
-	<script type="text/javascript">
-		$(function() {
-			$("#company").change(
-					function() {
-						var company = $("#company").val();
-						var token = $("meta[name='_csrf']").attr("content");
-						var header = $("meta[name='_csrf_header']").attr(
-								"content");
-						$.ajax({
-							type : "POST",
-							url : "AjaxSelectCompany",
-							data : {
-								companyId : company
 
-							},
-							dataType : "json",
-							beforeSend : function(xhr) {
-								xhr.setRequestHeader(header, token);
-							},
-							error : function() {
-								alert("資料傳輸有誤")
-							},
-							success : function(data) {
-								$("#medicine").empty();
-								$("#medicine").append(
-										"<option value=''>選擇藥品</option>");
-								$.each(data, function(index, item) {
-									$("#medicine").append(
-											"<option value='"+item+"'>" + item
-													+ "</option>");
-								});
-							}
-						});
-					});
-		});
-	</script>
+		<!-- Text input-->
+		<div>
+			<label>折讓一：</label> <input id="discount1" name="discount1"
+				placeholder="折讓金額一" type="text"> <label for="discount2">折讓二：</label>
+			<input id="discount2" name="discount2" placeholder="折讓金額二"
+				type="text"> <label>折讓三：</label><input id="discount3"
+				name="discount3" placeholder="折讓金額三" c type="text">
+		</div>
+	</form>
+	<script type="text/javascript" src="<c:url value="/resources/js/company.js" />"></script>
 </body>
 </html>

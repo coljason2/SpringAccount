@@ -5,7 +5,6 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.UUID;
 
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -43,7 +42,7 @@ public abstract class BaseMode implements Serializable, Comparator<Object> {
 	@Column(name = "UP_DATE")
 	private Date updateDate;
 
-	@Column(name = "OID")
+	@Column(name = "OID", unique = true)
 	private String oid;
 
 	public String getCreateDate() {

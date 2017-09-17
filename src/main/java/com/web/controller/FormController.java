@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.web.model.AccountForm;
 import com.web.service.AccountFormService;
+import com.web.service.CompnayService;
 import com.web.service.HospitalService;
 import com.web.ulit.AccDateGenerate;
 import com.web.ulit.OIDCreater;
@@ -31,6 +32,9 @@ public class FormController {
 
 	@Autowired
 	HospitalService HosService;
+
+	@Autowired
+	CompnayService compnayService;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listForm(ModelMap model) {
@@ -69,7 +73,7 @@ public class FormController {
 	public String showItemsForm(@PathVariable UUID id, Model model) {
 
 		model.addAttribute("form", Service.findbyOne(id));
-
+		model.addAttribute("companys", compnayService.getAll());
 		return "/jsp/form/items";
 	}
 
