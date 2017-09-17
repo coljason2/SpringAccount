@@ -43,6 +43,9 @@ public abstract class BaseMode implements Serializable, Comparator<Object> {
 	@Column(name = "UP_DATE")
 	private Date updateDate;
 
+	@Column(name = "OID")
+	private String oid;
+
 	public String getCreateDate() {
 		String date = createDate + "";
 		return date.substring(0, 10);
@@ -65,6 +68,14 @@ public abstract class BaseMode implements Serializable, Comparator<Object> {
 
 		String date = updateDate + "";
 		return date.substring(0, 10);
+	}
+
+	public String getOid() {
+		return oid;
+	}
+
+	public void setOid(String oid) {
+		this.oid = oid;
 	}
 
 	@PreUpdate
@@ -99,7 +110,7 @@ public abstract class BaseMode implements Serializable, Comparator<Object> {
 	@Override
 	public String toString() {
 		return "BaseMode [id=" + id + ", version=" + version + ", createDate=" + createDate + ", updateDate="
-				+ updateDate + "]";
+				+ updateDate + ", oid=" + oid + "]";
 	}
 
 }

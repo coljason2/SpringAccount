@@ -33,6 +33,7 @@ public class MedicineController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listMedicine(ModelMap model) {
+	
 		List<Medicine> meds = medService.getAll();
 
 		Collections.sort(meds, new Medicine());

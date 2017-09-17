@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import com.web.model.Hospital;
+import com.web.service.AccountFormService;
 import com.web.service.HospitalService;
 
 @Controller
@@ -28,6 +29,9 @@ public class HospitalController {
 	@Autowired
 	HospitalService service;
 
+	@Autowired
+	AccountFormService AccService;
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listHospital(ModelMap model) {
 
@@ -37,9 +41,9 @@ public class HospitalController {
 
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addtHospital(ModelMap model) {
+
 		model.addAttribute(new Hospital());
 
-		Log.info("listHospital");
 		return "/jsp/hospital/add";
 	}
 
@@ -57,12 +61,13 @@ public class HospitalController {
 
 	}
 
-	@RequestMapping(value = "/{hos_name}", method = RequestMethod.GET)
-	public String showHospital(@PathVariable String hos_name, Model model) {
+	@RequestMapping(value = "/{hos_id}/forms", method = RequestMethod.GET)
+	public String showFormsHospital(@PathVariable UUID hos_id, Model model) {
+		Log.info("----------hos_id = " + hos_id);
+		model.addAttribute("hos", service.findbyOne(hos_id));
+		model.addAttribute("forms", AccService.findByHosId(hos_id));
 
-		Log.info("showHospital");
-		// model.addAttribute();
-		return "/jsp/hospital/show";
+		return "/jsp/hospital/forms";
 	}
 
 	@RequestMapping(value = "/{hos_id}/update", method = RequestMethod.GET)

@@ -12,8 +12,6 @@
 <meta name="author" content="">
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet" type="text/css" />
-<link href="<c:url value="/resources/css/app.css" />" rel="stylesheet"
-	type="text/css" />
 <meta name="_csrf" content="${_csrf.token}" />
 <meta name="_csrf_header" content="${_csrf.headerName}" />
 

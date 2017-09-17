@@ -10,7 +10,9 @@
 <title>${com.com_name }</title>
 </head>
 <body>
-	<h2>${com.com_name}藥品項目</h2>
+	<div>
+		<h2>【${com.com_name}】藥品項目</h2>
+	</div>
 	<table class="table table-striped">
 		<thead>
 			<tr>

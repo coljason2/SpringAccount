@@ -14,31 +14,32 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "APP_FORM")
-@AttributeOverride(name = "id", column = @Column(name = "FORM_ID", nullable = false, columnDefinition = "BIGINT UNSIGNED"))
+@AttributeOverride(name = "id", column = @Column(name = "FORM_ID", nullable = false))
 public class AccountForm extends BaseMode {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -7440178362536621969L;
 
 	@ManyToOne
 	@JoinColumn(name = "HOSPITAL_ID")
-	private Hospital Hospital;
+	private Hospital hospital;
 
 	@Column(name = "FORM_TOTAL")
 	private Integer total;
+
+	// 記帳月份
+	@Column(name = "ACC_DATE")
+	private String acctDate;
 
 	@OneToMany
 	@JoinColumn(name = "FORM_ID")
 	private List<MedItem> MedItems;
 
 	public Hospital getHospital() {
-		return Hospital;
+		return hospital;
 	}
 
 	public void setHospital(Hospital hospital) {
-		Hospital = hospital;
+		this.hospital = hospital;
 	}
 
 	public List<MedItem> getMedItems() {
@@ -59,7 +60,15 @@ public class AccountForm extends BaseMode {
 
 	@Override
 	public String toString() {
-		return "AccountForm [Hospital=" + Hospital + ", total=" + total + ", MedItems=" + MedItems + ", id=" + id + "]";
+		return "AccountForm [Hospital=" + hospital.getHos_name() + ", total=" + total + ", id=" + id + "]";
+	}
+
+	public String getAcctDate() {
+		return acctDate;
+	}
+
+	public void setAcctDate(String acctDate) {
+		this.acctDate = acctDate;
 	}
 
 	@Override
