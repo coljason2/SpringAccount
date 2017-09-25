@@ -9,9 +9,10 @@
 <title>新增藥品細項</title>
 </head>
 <body>
+
 	<form class="form-control">
 		<!-- Form Name -->
-		<legend>記帳表單</legend>
+		<label>記帳表單</label>
 		<!-- Select Basic -->
 		<div>
 			<label>藥廠：</label> <select id="company">
@@ -25,20 +26,48 @@
 		</div>
 		<!-- Text input-->
 		<div>
-			<label>價格：</label> <input id="cost" name="cost" placeholder="進貨價格"
-				type="text"> <label>數量：</label> <input id="count"
-				name="count" placeholder="藥品數量" type="text">
+			<label>價格：</label> <input id="cost" name="cost" v-model="cost"
+				placeholder="進貨價格" type="text"> <label>數量：</label> <input
+				id="count" name="count" placeholder="藥品數量" type="text">
 		</div>
 
 		<!-- Text input-->
 		<div>
 			<label>折讓一：</label> <input id="discount1" name="discount1"
-				placeholder="折讓金額一" type="text"> <label for="discount2">折讓二：</label>
-			<input id="discount2" name="discount2" placeholder="折讓金額二"
-				type="text"> <label>折讓三：</label><input id="discount3"
-				name="discount3" placeholder="折讓金額三" c type="text">
+				v-model="discount1" placeholder="折讓金額一" type="text"> <label
+				for="discount2">折讓二：</label> <input id="discount2" name="discount2"
+				v-model="discount2" placeholder="折讓金額二" type="text"> <label>折讓三：</label><input
+				id="discount3" name="discount3" v-model="discount3" number
+				placeholder="折讓金額三" type="text">
 		</div>
+		<label>總金額：</label><input type="text" v-model="total"
+			v-bind:class="{totalResult}" />
 	</form>
-	<script type="text/javascript" src="<c:url value="/resources/js/company.js" />"></script>
+
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/company.js" />"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+	<script>
+		var app = new Vue({
+
+			el : '.form-control',
+			data : {
+
+				message : '',
+				cost : 0,
+				discount1 : 0,
+				discount2 : 0,
+				discount3 : 0,
+				total : 0,
+			},
+			computed : {
+				totalResult : function() {
+					return this.total = this.cost - this.discount1
+							- this.discount2 - this.discount3;
+				}
+			}
+
+		});
+	</script>
 </body>
 </html>
