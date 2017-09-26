@@ -28,7 +28,8 @@
 		<div>
 			<label>價格：</label> <input id="cost" name="cost" v-model="cost"
 				placeholder="進貨價格" type="text"> <label>數量：</label> <input
-				id="count" name="count" placeholder="藥品數量" type="text">
+				id="count" name="count" v-model="count" placeholder="藥品數量"
+				type="text">
 		</div>
 
 		<!-- Text input-->
@@ -43,7 +44,23 @@
 		<label>總金額：</label><input type="text" v-model="total"
 			v-bind:class="{totalResult}" />
 	</form>
-
+	<div>
+		<table class="table table-striped table-bordered">
+			<thead>
+				<tr>
+					<th>藥名</th>
+					<th>進貨日期</th>
+					<th>藥價</th>
+					<th>數量</th>
+					<th>折扣1</th>
+					<th>折扣2</th>
+					<th>折扣3</th>
+					<th>總額</th>
+				</tr>
+			</thead>
+		</table>
+		{{name}}
+	</div>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/company.js" />"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
@@ -52,9 +69,10 @@
 
 			el : '.form-control',
 			data : {
-
-				message : '',
+				items:[],
+				name : ,
 				cost : 0,
+				count: 0,
 				discount1 : 0,
 				discount2 : 0,
 				discount3 : 0,
@@ -66,8 +84,16 @@
 							- this.discount2 - this.discount3;
 				}
 			}
-
+			methods : {
+				addTodo: function(cost,count,dis1,dis2,dis3,total) {
+					this.items.push({iconst:cost,icount:count,idis1:dis1,idis2:dis2,idis3:dis3,itotal:total})
+				}
+				removeTodo: function(item) {
+					this.items.splice(this.items.indexOf(item),1)
+				}
+			}
 		});
+		
 	</script>
 </body>
 </html>
