@@ -26,6 +26,8 @@
 <script type="text/javascript"
 	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/datepicker-zh-TW.js" />"></script>
 <style>
 body {
 	padding-top: 54px;

@@ -21,7 +21,9 @@
 				</c:forEach>
 			</select> <label>藥品：</label> <select id="medicine">
 				<option>請選擇藥品</option>
-			</select>
+			</select> <label>進貨日期：</label> <input id="inputday" name="inputday"
+				placeholder="選擇日期" type="text">
+
 		</div>
 		<!-- Text input-->
 		<div>
@@ -42,10 +44,7 @@
 		</div>
 		<label>總金額：</label><input type="text" v-model="total"
 			v-bind:class="{totalResult}" /> {{name}}
-		<div id="sandbox-container">
-			<label>進貨日期：</label> <input id="inputday" name="inputday"
-				placeholder="選擇日期" type="text">
-		</div>
+
 	</form>
 	<div>
 		<table class="table table-striped table-bordered">
