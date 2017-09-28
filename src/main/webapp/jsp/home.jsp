@@ -21,8 +21,7 @@
 				</c:forEach>
 			</select> <label>藥品：</label> <select id="medicine">
 				<option>請選擇藥品</option>
-			</select> <label>進貨日期：</label> <input id="inputday" name="inputday"
-				placeholder="2017/01/01" type="text">
+			</select>
 		</div>
 		<!-- Text input-->
 		<div>
@@ -42,7 +41,11 @@
 				placeholder="折讓金額三" type="text">
 		</div>
 		<label>總金額：</label><input type="text" v-model="total"
-			v-bind:class="{totalResult}" />
+			v-bind:class="{totalResult}" /> {{name}}
+		<div id="sandbox-container">
+			<label>進貨日期：</label> <input id="inputday" name="inputday"
+				placeholder="選擇日期" type="text">
+		</div>
 	</form>
 	<div>
 		<table class="table table-striped table-bordered">
@@ -59,7 +62,6 @@
 				</tr>
 			</thead>
 		</table>
-		{{name}}
 	</div>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/company.js" />"></script>
@@ -69,10 +71,10 @@
 
 			el : '.form-control',
 			data : {
-				items:[],
-				name : ,
+				items : [],
+				name : '藥名',
 				cost : 0,
-				count: 0,
+				count : 0,
 				discount1 : 0,
 				discount2 : 0,
 				discount3 : 0,
@@ -84,16 +86,15 @@
 							- this.discount2 - this.discount3;
 				}
 			}
-			methods : {
-				addTodo: function(cost,count,dis1,dis2,dis3,total) {
-					this.items.push({iconst:cost,icount:count,idis1:dis1,idis2:dis2,idis3:dis3,itotal:total})
-				}
-				removeTodo: function(item) {
-					this.items.splice(this.items.indexOf(item),1)
-				}
-			}
 		});
-		
+	</script>
+	<script>
+		$(function() {
+			$("#inputday").datepicker({
+				dateFormat : "yy-mm-dd",
+				orientation : 'bottom auto'
+			});
+		});
 	</script>
 </body>
 </html>

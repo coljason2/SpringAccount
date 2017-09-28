@@ -8,12 +8,15 @@
 <!--meta  -->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="description" content="">
-<meta name="author" content="">
-<link href="<c:url value="/resources/css/bootstrap.min.css" />"
-	rel="stylesheet" type="text/css" />
+<!-- SpringSecurity token -->
 <meta name="_csrf" content="${_csrf.token}" />
 <meta name="_csrf_header" content="${_csrf.headerName}" />
+
+<!--CSS  -->
+<link href="<c:url value="/resources/css/jquery-ui.css" />"
+	rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/bootstrap.min.css" />"
+	rel="stylesheet" type="text/css" />
 
 <!-- Bootstrap core JavaScript -->
 <script type="text/javascript"
@@ -22,6 +25,7 @@
 	src="<c:url value="/resources/js/popper.min.js" />"></script>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
 body {
 	padding-top: 54px;
