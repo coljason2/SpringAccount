@@ -16,24 +16,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication()
-		.withUser("root")
-		.password("123456")
-		.roles("USER");
+		auth.inMemoryAuthentication().withUser("root").password("123456").roles("USER");
+		auth.inMemoryAuthentication().withUser("root").password("root").roles("USER");
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 
-		http.authorizeRequests().antMatchers("/", "/home", "/form/**", "/company/**", "/medicine/**", "/hospital/**")
-				.access("hasRole('USER')")
-				.and().formLogin()
-				.usernameParameter("ssoId")
-				.passwordParameter("password")
-				.loginPage("/login")
-				.and()
-				.exceptionHandling()
-				.accessDeniedPage("/Access_Denied");
+		http.authorizeRequests()
+		.antMatchers("/", "/home", "/form/**", "/company/**", "/medicine/**", "/hospital/**")
+		.access("hasRole('USER')").and().formLogin().usernameParameter("ssoId").passwordParameter("password")
+		.loginPage("/login").and().exceptionHandling().accessDeniedPage("/Access_Denied");
 	}
 
 	@Bean
