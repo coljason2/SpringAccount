@@ -76,6 +76,8 @@
 				</tr>
 		</table>
 	</div>
+	<input type="hidden" id="firstCompany" value="${companys[0].com_name}" />
+	<input type="hidden" id="firstMed" value="" />
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/company.js" />"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>

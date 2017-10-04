@@ -3,9 +3,9 @@ var app = new Vue({
 	data : {
 		MedItems : [],
 		newMed : {
-			company : '選擇藥品公司',
+			company : document.getElementById("firstCompany").value,
 			inputday : '',
-			name : '選擇藥品',
+			name : document.getElementById("firstMed").value,
 			cost : 0,
 			count : 0,
 			discount1 : 0,
@@ -24,9 +24,9 @@ var app = new Vue({
 		createMedItem : function() {
 			this.MedItems.push(this.newMed);
 			this.newMed = {
-				company : '選擇藥品公司',
+				company : document.getElementById("firstCompany").value,
 				inputday : '',
-				name : '選擇藥品',
+				name : document.getElementById("firstMed").value,
 				cost : 0,
 				count : 0,
 				discount1 : 0,
