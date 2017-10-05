@@ -21,10 +21,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.google.gson.Gson;
+import com.web.model.Company;
 import com.web.model.Medicine;
 import com.web.service.AccountFormService;
 import com.web.service.CompnayService;
+import com.web.service.MedicineService;
 
 @Controller
 @RequestMapping("/")
@@ -38,11 +39,19 @@ public class AppController {
 	AccountFormService Accountservice;
 	@Autowired
 	CompnayService comService;
+	@Autowired
+	MedicineService medService;
 
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String home(ModelMap model) {
 
-		model.addAttribute("companys", comService.getAll());
+		List<Company> companies = comService.getAll();
+		List<Medicine> medicines = medService.findAllByCompanyId(companies.get(0).getId());
+		model.addAttribute("companys", companies);
+		if (medicines != null)
+			model.addAttribute("meds", medicines);
+		else
+			model.addAttribute("meds", "無藥品");
 
 		return "/jsp/home";
 	}
@@ -64,38 +73,22 @@ public class AppController {
 
 	@RequestMapping(value = { "/AjaxSelectCompany" }, method = RequestMethod.POST)
 	@ResponseBody
-	public List<String> AjaxSelectCompany(String companyId) {
-		List<String> meds = new ArrayList<String>();
-		String company = companyId;
+	public List<String> AjaxSelectCompany(String comName) {
 
-		Log.warn("company is " + company);
+		Log.info("comName = {} " + comName);
+		List<Medicine> meds = medService.findAllByCompanyName(comName);
+		List<String> name = new ArrayList<String>();
+		if (meds != null)
+			for (Medicine s : meds)
+				name.add(s.getMed_name());
 
-		if (company.equals("信輝")) {
-			meds.add("AAA");
-			meds.add("BBB");
-			meds.add("CCC");
-		} else if (company.equals("永信")) {
-			meds.add("111");
-			meds.add("222");
-			meds.add("333");
+		if (name.size() != 0) {
+			return name;
 		} else {
-			meds.add("eee");
-			meds.add("rrr");
-			meds.add("ttt");
+			name.add("無藥品");
+			return name;
 		}
 
-		return meds;
 	}
 
-	private String getPrincipal() {
-		String userName = null;
-		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-		if (principal instanceof UserDetails) {
-			userName = ((UserDetails) principal).getUsername();
-		} else {
-			userName = principal.toString();
-		}
-		return userName;
-	}
 }

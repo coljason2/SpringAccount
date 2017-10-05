@@ -32,4 +32,10 @@ public class MedicineServiceImpl extends GenericServiceImpl<Medicine> implements
 
 	}
 
+	@Override
+	public List<Medicine> findAllByCompanyName(String name) {
+
+		return dao.findAllByCompanyName(name);
+	}
+
 }

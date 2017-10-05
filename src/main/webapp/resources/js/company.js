@@ -10,7 +10,7 @@ $(function() {
 							type : "POST",
 							url : "/" + ctx + "/AjaxSelectCompany",
 							data : {
-								companyId : company
+								comName : company
 
 							},
 							dataType : "json",
@@ -22,8 +22,8 @@ $(function() {
 							},
 							success : function(data) {
 								$("#medicine").empty();
-								$("#medicine").append(
-										"<option value=''>選擇藥品</option>");
+								//$("#medicine").append(
+										//"<option value=''>選擇藥品</option>");
 								$.each(data, function(index, item) {
 									$("#medicine").append(
 											"<option value='" + item + "'>"

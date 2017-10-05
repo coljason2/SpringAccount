@@ -11,4 +11,6 @@ public interface MedicineDao extends GenericDao<Medicine> {
 	public List<Medicine> findAllByCompanyId(UUID id);
 
 	public void deleteByComId(UUID id);
+
+	public List<Medicine> findAllByCompanyName(String name);
 }

@@ -38,4 +38,18 @@ public class MedicineDaoImpl extends AbstractGenericDao<Medicine> implements Med
 		// }
 	}
 
+	@Override
+	public List<Medicine> findAllByCompanyName(String name) {
+
+		String hql = "from Medicine m where m.company.com_name = ?";
+		Query query = this.getSession().createQuery(hql);
+		query.setParameter(0, name);
+		List<Medicine> list = query.list();
+		if (list != null && list.size() > 0) {
+			return list;
+		}
+
+		return null;
+	}
+
 }

@@ -20,7 +20,9 @@
 						<option value="${company.com_name}">${company.com_name}</option>
 					</c:forEach>
 				</select> <label>藥品：</label> <select id="medicine" v-model="newMed.name">
-					<option>請選擇藥品</option>
+					<c:forEach items="${meds}" var="m">
+						<option value="${m.med_name}">${m.med_name}</option>
+					</c:forEach>
 				</select> <label>進貨日期：</label> <input id="inputday" name="inputday"
 					v-model="newMed.inputday" type="text">
 			</div>
@@ -77,7 +79,7 @@
 		</table>
 	</div>
 	<input type="hidden" id="firstCompany" value="${companys[0].com_name}" />
-	<input type="hidden" id="firstMed" value="" />
+	<input type="hidden" id="firstMed" value="${meds[0].med_name}" />
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/company.js" />"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>

@@ -10,5 +10,7 @@ public interface MedicineService extends GenericService<Medicine> {
 
 	public List<Medicine> findAllByCompanyId(UUID id);
 
+	public List<Medicine> findAllByCompanyName(String name);
+
 	public void deleteMedByComId(UUID id);
 }
