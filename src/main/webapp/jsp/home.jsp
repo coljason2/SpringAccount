@@ -16,13 +16,28 @@
 			<!-- Select Basic -->
 			<div>
 				<label>藥廠：</label> <select id="company" v-model="newMed.company">
-					<c:forEach items="${companys}" var="company">
-						<option value="${company.com_name}">${company.com_name}</option>
-					</c:forEach>
+					<c:if test="${companys != '無藥廠'}">
+						<c:forEach items="${companys}" var="company">
+							<option value="${company.com_name}">${company.com_name}</option>
+						</c:forEach>
+						<input type="hidden" id="firstCompany"
+							value="${companys[0].com_name}" />
+					</c:if>
+					<c:if test="${companys == '無藥廠'}">
+						<option value="${companys}">${companys}</option>
+						<input type="hidden" id="firstCompany" value="${companys}" />
+					</c:if>
 				</select> <label>藥品：</label> <select id="medicine" v-model="newMed.name">
-					<c:forEach items="${meds}" var="m">
-						<option value="${m.med_name}">${m.med_name}</option>
-					</c:forEach>
+					<c:if test="${meds != '無藥品'}">
+						<c:forEach items="${meds}" var="m">
+							<option value="${m.med_name}">${m.med_name}</option>
+						</c:forEach>
+						<input type="hidden" id="firstMed" value="${meds[0].med_name}" />
+					</c:if>
+					<c:if test="${meds == '無藥品'}">
+						<option value="${meds}">${meds}</option>
+						<input type="hidden" id="firstMed" value="${meds}" />
+					</c:if>
 				</select> <label>進貨日期：</label> <input id="inputday" name="inputday"
 					v-model="newMed.inputday" type="text">
 			</div>
@@ -78,8 +93,6 @@
 				</tr>
 		</table>
 	</div>
-	<input type="hidden" id="firstCompany" value="${companys[0].com_name}" />
-	<input type="hidden" id="firstMed" value="${meds[0].med_name}" />
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/company.js" />"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
