@@ -62,36 +62,39 @@
 				v-model="newMed.total" v-bind:class="{totalResult}" /> <a
 				class="btn btn-primary" v-on:click="createMedItem">新增藥品</a>
 		</form>
-		<table class="table table-striped table-bordered">
-			<thead>
-				<tr>
-					<th>藥廠</th>
-					<th>藥名</th>
-					<th>進貨日期</th>
-					<th>藥價</th>
-					<th>數量</th>
-					<th>折扣-1</th>
-					<th>折扣-2</th>
-					<th>折扣-3</th>
-					<th>總額</th>
-					<th>功能</th>
-				</tr>
-			</thead>
-			<thead>
-				<tr v-for="med in MedItems">
-					<td>{{ med.company }}</td>
-					<td>{{ med.name }}</td>
-					<td>{{ med.inputday }}</td>
-					<td>{{ med.cost }}</td>
-					<td>{{ med.count }}</td>
-					<td>{{ med.discount1 }}</td>
-					<td>{{ med.discount2 }}</td>
-					<td>{{ med.discount3 }}</td>
-					<td>{{ med.total }}</td>
-					<td><a class="btn btn-danger" v-on:click="deleteMedItem">Delete
-					</a></td>
-				</tr>
-		</table>
+		<form class="form-control" method="post" action="AddForm">
+			<input type="submit" value="提交帳單" class="btn btn-info">
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>藥廠</th>
+						<th>藥名</th>
+						<th>進貨日期</th>
+						<th>藥價</th>
+						<th>數量</th>
+						<th>折扣-1</th>
+						<th>折扣-2</th>
+						<th>折扣-3</th>
+						<th>總額</th>
+						<th>功能</th>
+					</tr>
+				</thead>
+				<thead>
+					<tr v-for="med in MedItems">
+						<td><input type="hidden" v-model="med.company">{{ med.company }}</td>
+						<td><input type="hidden" v-model="med.name">{{ med.name }}</td>
+						<td><input type="hidden" v-model="med.inputday">{{ med.inputday }}</td>
+						<td><input type="hidden" v-model="med.cost">{{ med.cost }}</td>
+						<td><input type="hidden" v-model="med.count">{{ med.count }}</td>
+						<td><input type="hidden" v-model="med.discount1">{{ med.discount1 }}</td>
+						<td><input type="hidden" v-model="med.discount2">{{ med.discount2 }}</td>
+						<td><input type="hidden" v-model="med.discount3">{{ med.discount3 }}</td>
+						<td><input type="hidden" v-model="med.total">{{ med.total }}</td>
+						<td><a class="btn btn-danger" v-on:click="deleteMedItem">Delete
+						</a></td>
+					</tr>
+			</table>
+		</form>
 	</div>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/company.js" />"></script>

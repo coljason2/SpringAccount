@@ -52,7 +52,7 @@ public class Company extends BaseMode {
 
 	@Override
 	public String toString() {
-		return "Company [id=" + id + ", com_name=" + com_name + ", Medicines=" + Medicines + "]";
+		return "Company [id=" + id + ", com_name=" + com_name + "]";
 	}
 
 	@Override
