@@ -62,8 +62,8 @@
 				v-model="newMed.total" v-bind:class="{totalResult}" /> <a
 				class="btn btn-primary" v-on:click="createMedItem">新增藥品</a>
 		</form>
-		<form class="form-control" method="post" action="AddForm">
-			<input type="submit" value="提交帳單" class="btn btn-info">
+
+			<a v-on:click="addMedItems" class="btn btn-info">提交帳單</a>
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr>
@@ -94,11 +94,12 @@
 						</a></td>
 					</tr>
 			</table>
-		</form>
+		
 	</div>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/company.js" />"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>
 	<script src="<c:url value="/resources/js/addItem.js" />"></script>
 	<script>
 		$(function() {

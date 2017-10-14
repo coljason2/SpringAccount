@@ -28,6 +28,11 @@ public abstract class GenericServiceImpl<T extends BaseMode> implements GenericS
 	public T findbyOne(UUID id) {
 		return genericDao.findOne(id);
 	}
+	
+	@Override
+	public T findbyOne(String id) {
+		return genericDao.findOne(id);
+	}
 
 	@Override
 	public void add(T entity) {

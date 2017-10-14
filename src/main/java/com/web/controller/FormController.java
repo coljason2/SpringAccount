@@ -15,9 +15,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.web.model.AccountForm;
+import com.web.model.Company;
+import com.web.model.Medicine;
 import com.web.service.AccountFormService;
 import com.web.service.CompnayService;
 import com.web.service.HospitalService;
+import com.web.service.MedItemService;
+import com.web.service.MedicineService;
 import com.web.ulit.AccDateGenerate;
 import com.web.ulit.OIDCreater;
 
@@ -29,10 +33,12 @@ public class FormController {
 
 	@Autowired
 	AccountFormService Service;
-
+	@Autowired
+	MedicineService medService;
 	@Autowired
 	HospitalService HosService;
-
+	@Autowired
+	MedItemService meditService;
 	@Autowired
 	CompnayService compnayService;
 
@@ -74,16 +80,28 @@ public class FormController {
 
 		model.addAttribute("form", Service.findbyOne(id));
 		model.addAttribute("companys", compnayService.getAll());
+		model.addAttribute("meds", meditService.findbyformId(id));
 		return "/jsp/form/items";
 	}
 
 	@RequestMapping(value = "/{id}/update", method = RequestMethod.GET)
-	public String updateForm(@PathVariable int id, Model model) {
-		// display list
-		Log.info("showForm");
-		// model.addAttribute();
+	public String updateForm(@PathVariable UUID id, Model model) {
 
-		return "/jsp/form/update";
+		List<Company> companies = compnayService.getAll();
+		if (companies.size() > 0) {
+			model.addAttribute("companys", companies);
+			List<Medicine> medicines = medService.findAllByCompanyId(companies.get(0).getId());
+			if (medicines != null)
+				model.addAttribute("meds", medicines);
+			else
+				model.addAttribute("meds", "無藥品");
+		} else {
+			model.addAttribute("companys", "無藥廠");
+			model.addAttribute("meds", "無藥品");
+		}
+		model.addAttribute("form", Service.findbyOne(id));
+
+		return "/jsp/form/edit";
 	}
 
 	@RequestMapping(value = "/{id}/update", method = RequestMethod.POST)

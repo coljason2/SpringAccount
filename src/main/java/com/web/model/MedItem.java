@@ -32,20 +32,26 @@ public class MedItem extends BaseMode {
 	private Integer itemcount;
 
 	@Column(name = "IN_COST")
-	private String input_cost;
+	private int input_cost;
 
 	@Column(name = "DIS_1")
-	private String discount1;
+	private int discount1;
 
 	@Column(name = "DIS_2")
-	private String discount2;
+	private int discount2;
 
 	@Column(name = "DIS_3")
-	private String discount3;
+	private int discount3;
+
+	@Column(name = "INPUTDATE")
+	private String inputdate;
 
 	@ManyToOne
 	@JoinColumn(name = "FORM_ID", updatable = false, nullable = false)
 	private AccountForm AccountForm;
+
+	@Column(name = "TOTAL")
+	private int total;
 
 	public String getCompany() {
 		return company;
@@ -63,35 +69,35 @@ public class MedItem extends BaseMode {
 		this.medicine = medicine;
 	}
 
-	public String getInput_cost() {
+	public int getInput_cost() {
 		return input_cost;
 	}
 
-	public void setInput_cost(String input_cost) {
+	public void setInput_cost(int input_cost) {
 		this.input_cost = input_cost;
 	}
 
-	public String getDiscount1() {
+	public int getDiscount1() {
 		return discount1;
 	}
 
-	public void setDiscount1(String discount1) {
+	public void setDiscount1(int discount1) {
 		this.discount1 = discount1;
 	}
 
-	public String getDiscount2() {
+	public int getDiscount2() {
 		return discount2;
 	}
 
-	public void setDiscount2(String discount2) {
+	public void setDiscount2(int discount2) {
 		this.discount2 = discount2;
 	}
 
-	public String getDiscount3() {
+	public int getDiscount3() {
 		return discount3;
 	}
 
-	public void setDiscount3(String discount3) {
+	public void setDiscount3(int discount3) {
 		this.discount3 = discount3;
 	}
 
@@ -103,11 +109,35 @@ public class MedItem extends BaseMode {
 		AccountForm = accountForm;
 	}
 
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
+	public String getInputdate() {
+		return inputdate;
+	}
+
+	public void setInputdate(String inputdate) {
+		this.inputdate = inputdate;
+	}
+
+	public Integer getItemcount() {
+		return itemcount;
+	}
+
+	public void setItemcount(Integer itemcount) {
+		this.itemcount = itemcount;
+	}
+
 	@Override
 	public String toString() {
 		return "MedItem [company=" + company + ", medicine=" + medicine + ", itemcount=" + itemcount + ", input_cost="
 				+ input_cost + ", discount1=" + discount1 + ", discount2=" + discount2 + ", discount3=" + discount3
-				+ ", AccountForm=" + AccountForm + ", id=" + id + "]";
+				+ ", AccountForm=" + AccountForm.getOid() + ", total=" + total + "]";
 	}
 
 	@Override

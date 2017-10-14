@@ -8,6 +8,8 @@ import com.web.model.BaseMode;
 public interface GenericDao<T extends BaseMode> {
 	T findOne(final UUID id);
 
+	T findOne(final String id);
+	
 	List<T> findAll();
 
 	void AddEntity(final T entity);

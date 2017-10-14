@@ -11,6 +11,8 @@ public interface GenericService<T extends BaseMode> {
 
 	public T findbyOne(UUID id);
 
+	public T findbyOne(String id);
+
 	public void add(T entity);
 
 	public void update(T entity);

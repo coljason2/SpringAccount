@@ -38,7 +38,33 @@ var app = new Vue({
 		deleteMedItem : function(index) {
 			// 刪一個數組元素
 			this.MedItems.splice(index, 1);
+		},
+		addMedItems : function() {
+			var vm = this
+			var JSONMedItems = vm.MedItems
+			var ctx = $("#ctx").val()
+			var formid = $("#formid").val()
+			var token = $("meta[name='_csrf']").attr("content")
+			var header = $("meta[name='_csrf_header']").attr("content")
+			$.ajax({
+				url : ctx + "/VueAddMedItems",
+				type : 'POST',
+				dataType : 'json',
+				contentType : 'application/json;charset=UTF-8',
+				beforeSend : function(xhr) {
+					xhr.setRequestHeader(header, token)
+				},
+				data : JSON.stringify({
+					JSONobject : JSONMedItems,
+					formid : formid
+				}),
+				success : function(data) {
+					alert("新增成功")
+				},
+				error : function(data) {
+					alert("新增失敗")
+				}
+			})
 		}
-
 	}
 });

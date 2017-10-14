@@ -9,37 +9,54 @@
 <title>編號${form.oid }</title>
 </head>
 <body>
-	<script type="text/javascript"
-		src="<c:url value="/resources/js/company.js" />"></script>
-	<form class="form-control">
-		<!-- Form Name -->
-		<legend>記帳表單</legend>
-		<!-- Select Basic -->
+
+
+	<div class="form-control">
 		<div>
-			<label>藥廠：</label> <select id="company">
-				<c:forEach items="${companys}" var="company">
-					<option value="${company.com_name}">${company.com_name}</option>
-				</c:forEach>
-			</select> <label>藥品：</label> <select id="medicine">
-				<option>請選擇藥品</option>
-			</select> <label>進貨日期：</label> <input id="inputday" name="inputday"
-				placeholder="2017/01/01" type="text">
-		</div>
-		<!-- Text input-->
-		<div>
-			<label>價格：</label> <input id="cost" name="cost" placeholder="進貨價格"
-				type="text"> <label>數量：</label> <input id="count"
-				name="count" placeholder="藥品數量" type="text">
+			<label>所屬醫院：</label> ${form.hospital.hos_name }
 		</div>
 
-		<!-- Text input-->
 		<div>
-			<label>折讓一：</label> <input id="discount1" name="discount1"
-				placeholder="折讓金額一" type="text"> <label for="discount2">折讓二：</label>
-			<input id="discount2" name="discount2" placeholder="折讓金額二"
-				type="text"> <label>折讓三：</label><input id="discount3"
-				name="discount3" placeholder="折讓金額三" c type="text">
+			<label>帳單編號：</label> ${form.oid }
 		</div>
-	</form>
+		<div>
+			<label>帳單月份：</label> ${form.acctDate }
+		</div>
+	</div>
+	<div>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>藥品名稱</th>
+					<th>藥廠</th>
+					<th>數量</th>
+					<th>進貨價格</th>
+					<th>折讓一</th>
+					<th>折讓二</th>
+					<th>折讓三</th>
+					<th>實際價格</th>
+				</tr>
+			</thead>
+			<c:forEach var="meds" items="${meds}" varStatus="status">
+				<tr>
+					<td>${status.index}</td>
+					<td>${meds.medicine}</td>
+					<td>${meds.company}</td>
+					<td>${meds.itemcount}</td>
+					<td>${meds.input_cost}</td>
+					<td>${meds.discount1}</td>
+					<td>${meds.discount2}</td>
+					<td>${meds.discount3}</td>
+					<td>${meds.total}</td>
+					<td><spring:url value="${meds.id}/delete" var="deleteUrl" />
+						<spring:url value="${meds.id}/update" var="updateUrl" /> <a
+						class="btn btn-primary" href="${updateUrl}">編輯</a> <a
+						class="btn btn-danger" href="${deleteUrl}">刪除</a></td>
+				</tr>
+			</c:forEach>
+		</table>
+	</div>
+
 </body>
 </html>

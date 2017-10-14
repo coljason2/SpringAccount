@@ -1,5 +1,8 @@
 package com.web.service.implment;
 
+import java.util.List;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,5 +17,10 @@ public class MedItemServiceImpl extends GenericServiceImpl<MedItem> implements M
 
 	@Autowired
 	MedItemDao dao;
+
+	@Override
+	public List<MedItem> findbyformId(UUID id) {
+		return dao.findbyformId(id);
+	}
 
 }

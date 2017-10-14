@@ -58,6 +58,10 @@ public abstract class AbstractGenericDao<T extends BaseMode> implements GenericD
 		return (T) getSession().get(Entity, id);
 	}
 
+	public T findOne(String id) {
+		return (T) getSession().get(Entity, id);
+	}
+
 	protected Criteria createEntityCriteria() {
 		return getSession().createCriteria(Entity);
 	}
@@ -76,7 +80,6 @@ public abstract class AbstractGenericDao<T extends BaseMode> implements GenericD
 
 	public void clear() {
 		getSession().clear();
-
 	}
 
 	public void flush() {
