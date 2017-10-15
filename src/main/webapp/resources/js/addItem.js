@@ -59,8 +59,13 @@ var app = new Vue({
 					formid : formid
 				}),
 				success : function(data) {
-					alert("新增成功")
-					window.location.href = ctx + '/form/' + formid + '/items'
+					if (data == true) {
+						alert('新增成功')
+						window.location.href = ctx + '/form/' + formid
+								+ '/items'
+					} else {
+						alert('無資料新增')
+					}
 				},
 				error : function(data) {
 					alert("新增失敗")

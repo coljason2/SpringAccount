@@ -26,7 +26,7 @@
 		<c:forEach var="forms" items="${forms}" varStatus="status">
 			<spring:url value="${forms.id}/items" var="listmedsUrl" />
 			<spring:url value="${forms.id}/delete" var="deleteUrl" />
-			<spring:url value="${forms.id}/update" var="updateUrl" />
+			<spring:url value="${forms.id}/edit" var="updateUrl" />
 			<spring:url value="${forms.id}/exportpdf" var="exportpdf" />
 			<spring:url value="${forms.id}/exportexcel" var="exportexcel" />
 			<tr>

@@ -20,7 +20,7 @@
 	<div id="app">
 		<form class="form-control">
 			<!-- Form Name -->
-			<label>帳單編號：</label>${form.id }<input type="hidden" id="formid"
+			<label>帳單編號：</label>${form.oid }<input type="hidden" id="formid"
 				value="${form.id }" />
 			<div>
 				<label>帳單月份：</label> ${form.acctDate }

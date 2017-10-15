@@ -84,7 +84,7 @@ public class FormController {
 		return "/jsp/form/items";
 	}
 
-	@RequestMapping(value = "/{id}/update", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
 	public String updateForm(@PathVariable UUID id, Model model) {
 
 		List<Company> companies = compnayService.getAll();
@@ -115,9 +115,19 @@ public class FormController {
 
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
 	public String deleteForm(@PathVariable UUID id, Model model) {
+		
 		meditService.removebyformId(id);
 		Service.removebyId(id);
 		return "redirect:/form/list";
+		
+	}
+
+	@RequestMapping(value = "{fromid}/{medid}/delete", method = RequestMethod.GET)
+	public String deleteMedItem(@PathVariable UUID fromid, @PathVariable UUID medid, Model model) {
+		
+		meditService.removebyId(medid);
+		return "redirect:/form/" + fromid + "/items";
+		
 	}
 
 	@RequestMapping(value = "/{id}/exportpdf", method = RequestMethod.GET)

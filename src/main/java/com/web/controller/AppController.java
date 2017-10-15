@@ -102,22 +102,27 @@ public class AppController {
 		String JSONItems = array.getJSONObject(0).get("JSONobject").toString();
 		List<JSONmedItem> list = JSON.parseObject(JSONItems, new TypeReference<List<JSONmedItem>>() {
 		});
-		AccountForm form = Accountservice.findbyOne(formid);
-		for (JSONmedItem o : list) {
-			MedItem item = new MedItem();
-			item.setAccountForm(form);
-			item.setMedicine(o.getName());
-			item.setCompany(o.getCompany());
-			item.setInputdate(o.getInputday());
-			item.setInput_cost(o.getCost());
-			item.setItemcount(o.getCount());
-			item.setDiscount1(o.getDiscount1());
-			item.setDiscount2(o.getDiscount2());
-			item.setDiscount3(o.getDiscount3());
-			item.setTotal(o.getTotal());
-			meditService.add(item);
+		if (list.size() > 0) {
+			AccountForm form = Accountservice.findbyOne(formid);
+			for (JSONmedItem o : list) {
+				MedItem item = new MedItem();
+				item.setAccountForm(form);
+				item.setMedicine(o.getName());
+				item.setCompany(o.getCompany());
+				item.setInputdate(o.getInputday());
+				item.setInput_cost(o.getCost());
+				item.setItemcount(o.getCount());
+				item.setDiscount1(o.getDiscount1());
+				item.setDiscount2(o.getDiscount2());
+				item.setDiscount3(o.getDiscount3());
+				item.setTotal(o.getTotal());
+				meditService.add(item);
+			}
+			return "true";
+		} else {
+			return "false";
 		}
-		return "true";
+
 	}
 
 }
