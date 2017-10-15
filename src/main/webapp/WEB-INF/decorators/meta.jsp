@@ -20,7 +20,9 @@
 <link
 	href="https://cdn.datatables.net/plug-ins/1.10.7/integration/jqueryui/dataTables.jqueryui.css"
 	rel="stylesheet" type="text/css" />
-
+<link
+	href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.min.css"
+	rel="stylesheet" type="text/css" />
 <!--  JavaScript -->
 <script type="text/javascript"
 	src="<c:url value="/resources/js/jquery.min.js" />"></script>
@@ -31,10 +33,25 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script
 	src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+<script
+	src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.min.js"></script>
+<script
+	src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.flash.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script
+	src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.html5.min.js"></script>
+<script
+	src="https://cdn.datatables.net/buttons/1.4.2/js/buttons.print.min.js"></script>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/datepicker-zh-TW.js" />"></script>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/TableScript.js" />"></script>
+
 
 <style>
 body {

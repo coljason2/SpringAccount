@@ -24,8 +24,8 @@
 		</div>
 	</div>
 
-	<table id="datatable" class="table table-striped table-bordered"
-		width="100%" cellspacing="0">
+	<table id="sourcetable" class="table table-striped" width="100%"
+		cellspacing="0">
 		<thead>
 			<tr>
 				<th>ID</th>
