@@ -39,8 +39,8 @@
 				<td><a class="btn btn-info" href="${listmedsUrl}">細項</a> <a
 					class="btn btn-primary" href="${updateUrl}">編輯</a> <a
 					class="btn btn-danger" href="${deleteUrl}">刪除</a><a
-					class="btn btn-link" href="${exportpdf}">PDF</a><a
-					class="btn btn-link" href="${exportexcel}">EXCEL</a></td>
+					class="btn btn-link" href="${exportpdf}" target="_blank">PDF</a><a
+					class="btn btn-link" href="${exportexcel}" target="_blank">EXCEL</a></td>
 
 			</tr>
 		</c:forEach>

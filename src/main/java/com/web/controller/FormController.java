@@ -115,11 +115,28 @@ public class FormController {
 
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
 	public String deleteForm(@PathVariable UUID id, Model model) {
-
-		Log.info("deleteForm");
 		meditService.removebyformId(id);
 		Service.removebyId(id);
-		;
 		return "redirect:/form/list";
+	}
+
+	@RequestMapping(value = "/{id}/exportpdf", method = RequestMethod.GET)
+	public String exportpdf(@PathVariable UUID id, Model model) {
+
+		model.addAttribute("form", Service.findbyOne(id));
+		model.addAttribute("companys", compnayService.getAll());
+		model.addAttribute("meds", meditService.findbyformId(id));
+
+		return "/jsp/export/PDFexport";
+	}
+
+	@RequestMapping(value = "/{id}/exportexcel", method = RequestMethod.GET)
+	public String exportexcel(@PathVariable UUID id, Model model) {
+
+		model.addAttribute("form", Service.findbyOne(id));
+		model.addAttribute("companys", compnayService.getAll());
+		model.addAttribute("meds", meditService.findbyformId(id));
+
+		return "/jsp/export/EXCELexport";
 	}
 }

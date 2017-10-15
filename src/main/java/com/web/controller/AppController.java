@@ -56,26 +56,11 @@ public class AppController {
 
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String home(ModelMap model) {
-
-		List<Company> companies = comService.getAll();
-		if (companies.size() > 0) {
-			model.addAttribute("companys", companies);
-			List<Medicine> medicines = medService.findAllByCompanyId(companies.get(0).getId());
-			if (medicines != null)
-				model.addAttribute("meds", medicines);
-			else
-				model.addAttribute("meds", "無藥品");
-		} else {
-			model.addAttribute("companys", "無藥廠");
-			model.addAttribute("meds", "無藥品");
-		}
-
-		return "/jsp/home";
+		return "redirect:/form/list";
 	}
 
 	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
 	public String login(ModelMap model) {
-
 		return "login";
 	}
 
@@ -132,7 +117,6 @@ public class AppController {
 			item.setTotal(o.getTotal());
 			meditService.add(item);
 		}
-
 		return "true";
 	}
 

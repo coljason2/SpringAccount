@@ -12,7 +12,7 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 				<li class="nav-item"><a class="nav-link"
-					href="<c:url value="/home" />">新增表單 </a></li>
+					href="http://mymedicinequery.herokuapp.com/index" target="_blank">藥品查詢</a></li>
 				<li class="nav-item"><a class="nav-link"
 					href="<c:url value="/form/list" />">帳單管理 </a></li>
 				<li class="nav-item"><a class="nav-link"
