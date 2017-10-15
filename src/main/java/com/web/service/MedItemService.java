@@ -10,4 +10,6 @@ public interface MedItemService extends GenericService<MedItem> {
 
 	public List<MedItem> findbyformId(UUID id);
 
+	public void removebyformId(UUID id);
+
 }

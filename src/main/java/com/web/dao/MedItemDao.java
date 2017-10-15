@@ -10,4 +10,6 @@ public interface MedItemDao extends GenericDao<MedItem> {
 
 	public List<MedItem> findbyformId(UUID id);
 
+	public void removebyformId(UUID id);
+
 }

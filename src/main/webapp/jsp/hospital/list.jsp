@@ -14,7 +14,7 @@
 </head>
 <body>
 	<a class="btn btn-info" href="<c:url value="/hospital/add" />">新增醫院</a>
-	<table class="table table-striped">
+	<table  id="datatable" class="table table-striped">
 		<thead>
 			<tr>
 				<th>ID</th>

@@ -10,7 +10,7 @@
 </head>
 <body>
 	<a class="btn btn-info" href="<c:url value="/company/add" />">新增藥廠</a>
-	<table class="table table-striped">
+	<table class="table table-striped" id="datatable">
 		<thead>
 			<tr>
 				<th>ID</th>

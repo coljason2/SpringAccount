@@ -23,24 +23,29 @@
 			<label>帳單月份：</label> ${form.acctDate }
 		</div>
 	</div>
-	<div>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>藥品名稱</th>
-					<th>藥廠</th>
-					<th>數量</th>
-					<th>進貨價格</th>
-					<th>折讓一</th>
-					<th>折讓二</th>
-					<th>折讓三</th>
-					<th>實際價格</th>
-				</tr>
-			</thead>
+
+	<table id="datatable" class="table table-striped table-bordered"
+		width="100%" cellspacing="0">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>進貨日</th>
+				<th>藥品名稱</th>
+				<th>藥廠</th>
+				<th>數量</th>
+				<th>進貨價格</th>
+				<th>折讓一</th>
+				<th>折讓二</th>
+				<th>折讓三</th>
+				<th>實際價格</th>
+				<th>功能</th>
+			</tr>
+		</thead>
+		<tbody>
 			<c:forEach var="meds" items="${meds}" varStatus="status">
 				<tr>
 					<td>${status.index}</td>
+					<td>${meds.inputdate}</td>
 					<td>${meds.medicine}</td>
 					<td>${meds.company}</td>
 					<td>${meds.itemcount}</td>
@@ -55,8 +60,7 @@
 						class="btn btn-danger" href="${deleteUrl}">刪除</a></td>
 				</tr>
 			</c:forEach>
-		</table>
-	</div>
-
+		</tbody>
+	</table>
 </body>
 </html>

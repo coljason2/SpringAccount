@@ -60,6 +60,7 @@ var app = new Vue({
 				}),
 				success : function(data) {
 					alert("新增成功")
+					window.location.href = ctx + '/form/' + formid + '/items'
 				},
 				error : function(data) {
 					alert("新增失敗")

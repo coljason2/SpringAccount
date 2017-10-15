@@ -11,7 +11,7 @@
 </head>
 <body>
 	<a class="btn btn-info" href="<c:url value="/form/add" />">新增帳單</a>
-	<table class="table table-striped">
+	<table id="datatable" class="table table-striped">
 		<thead>
 			<tr>
 				<th>ID</th>

@@ -23,4 +23,9 @@ public class MedItemServiceImpl extends GenericServiceImpl<MedItem> implements M
 		return dao.findbyformId(id);
 	}
 
+	@Override
+	public void removebyformId(UUID id) {
+		dao.removebyformId(id);
+	}
+
 }

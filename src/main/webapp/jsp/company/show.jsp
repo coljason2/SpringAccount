@@ -13,7 +13,7 @@
 	<div>
 		<h2>【${com.com_name}】藥品項目</h2>
 	</div>
-	<table class="table table-striped">
+	<table id="datatable" class="table table-striped">
 		<thead>
 			<tr>
 				<th>藥品ID</th>

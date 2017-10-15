@@ -8,6 +8,14 @@
 <head>
 <title>新增藥品細項</title>
 </head>
+<style>
+#ob {
+	width: 100%;
+	vertical-align: middle;
+	text-align: left;
+	position: absolute;
+}
+</style>
 <body>
 	<div id="app">
 		<form class="form-control">
@@ -71,7 +79,7 @@
 		</form>
 
 
-		<table class="table table-striped table-bordered">
+		<table class="table table-striped">
 			<thead>
 				<tr>
 					<th>藥廠</th>
@@ -87,6 +95,7 @@
 				</tr>
 			</thead>
 			<thead>
+			<tbody>
 				<tr v-for="med in MedItems">
 					<td>{{ med.company }}</td>
 					<td>{{ med.name }}</td>
@@ -100,15 +109,17 @@
 					<td><a class="btn btn-danger" v-on:click="deleteMedItem">Delete
 					</a></td>
 				</tr>
+			</tbody>
 		</table>
 		<input type="hidden" id="ctx"
 			value="${pageContext.servletContext.contextPath}" />
 	</div>
 	<script type="text/javascript"
 		src="<c:url value="/resources/js/company.js" />"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.3/vue.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>
-	<script src="<c:url value="/resources/js/addItem.js" />"></script>
+	<script type="text/javascript"
+		src="https://unpkg.com/vue@2.1.4/dist/vue.js"></script>
+	<script type="text/javascript"
+		src="<c:url value="/resources/js/addItem.js" />"></script>
 	<script>
 		$(function() {
 			$("#inputday").datepicker({

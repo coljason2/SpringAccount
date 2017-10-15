@@ -15,10 +15,13 @@
 <!--CSS  -->
 <link href="<c:url value="/resources/css/jquery-ui.css" />"
 	rel="stylesheet" type="text/css" />
-<link href="<c:url value="/resources/css/bootstrap.min.css" />"
+<link href="<c:url value="/resources/css/bootstrap.css" />"
+	rel="stylesheet" type="text/css" />
+<link
+	href="https://cdn.datatables.net/plug-ins/1.10.7/integration/jqueryui/dataTables.jqueryui.css"
 	rel="stylesheet" type="text/css" />
 
-<!-- Bootstrap core JavaScript -->
+<!--  JavaScript -->
 <script type="text/javascript"
 	src="<c:url value="/resources/js/jquery.min.js" />"></script>
 <script type="text/javascript"
@@ -26,8 +29,13 @@
 <script type="text/javascript"
 	src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script
+	src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript"
 	src="<c:url value="/resources/js/datepicker-zh-TW.js" />"></script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/TableScript.js" />"></script>
+
 <style>
 body {
 	padding-top: 54px;

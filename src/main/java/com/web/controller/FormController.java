@@ -117,6 +117,7 @@ public class FormController {
 	public String deleteForm(@PathVariable UUID id, Model model) {
 
 		Log.info("deleteForm");
+		meditService.removebyformId(id);
 		Service.removebyId(id);
 		;
 		return "redirect:/form/list";
