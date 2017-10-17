@@ -31,7 +31,7 @@
 			<spring:url value="${forms.id}/exportexcel" var="exportexcel" />
 			<tr>
 				<td>${status.index }</td>
-				<td>${forms.oid }</td>
+				<td><a href="${listmedsUrl}" target="_blank">${forms.oid }</a></td>
 				<td>${forms.hospital.hos_name }</td>
 				<td>${forms.acctDate }</td>
 				<td>${forms.createDate }</td>

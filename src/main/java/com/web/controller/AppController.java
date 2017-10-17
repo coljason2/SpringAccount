@@ -2,13 +2,11 @@ package com.web.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.core.Authentication;
@@ -52,7 +50,6 @@ public class AppController {
 	AccountFormService Service;
 	@Autowired
 	MedItemService meditService;
-	private final ObjectMapper mapper = new ObjectMapper();
 
 	@RequestMapping(value = { "/", "/home" }, method = RequestMethod.GET)
 	public String home(ModelMap model) {
@@ -103,6 +100,7 @@ public class AppController {
 		List<JSONmedItem> list = JSON.parseObject(JSONItems, new TypeReference<List<JSONmedItem>>() {
 		});
 		if (list.size() > 0) {
+			int total = 0;
 			AccountForm form = Accountservice.findbyOne(formid);
 			for (JSONmedItem o : list) {
 				MedItem item = new MedItem();
@@ -117,7 +115,10 @@ public class AppController {
 				item.setDiscount3(o.getDiscount3());
 				item.setTotal(o.getTotal());
 				meditService.add(item);
+				total = total + o.getTotal();
 			}
+			form.setTotal(total);
+			Accountservice.update(form);
 			return "true";
 		} else {
 			return "false";
