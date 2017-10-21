@@ -1,3 +1,7 @@
+var ctx = $("#ctx").val()
+var formid = $("#formid").val()
+var token = $("meta[name='_csrf']").attr("content")
+var header = $("meta[name='_csrf_header']").attr("content")
 var app = new Vue({
 	el : '#app',
 	data : {
@@ -42,12 +46,8 @@ var app = new Vue({
 		addMedItems : function() {
 			var vm = this
 			var JSONMedItems = vm.MedItems
-			var ctx = $("#ctx").val()
-			var formid = $("#formid").val()
-			var token = $("meta[name='_csrf']").attr("content")
-			var header = $("meta[name='_csrf_header']").attr("content")
 			$.ajax({
-				url : ctx + "/VueAddMedItems",
+				url : ctx + "VueAddMedItems",
 				type : 'POST',
 				dataType : 'json',
 				contentType : 'application/json;charset=UTF-8',
@@ -57,6 +57,36 @@ var app = new Vue({
 				data : JSON.stringify({
 					JSONobject : JSONMedItems,
 					formid : formid
+				}),
+				success : function(data) {
+					if (data == true) {
+						alert('新增成功')
+						window.location.href = ctx + '/form/' + formid
+								+ '/items'
+					} else {
+						alert('無資料新增')
+					}
+				},
+				error : function(data) {
+					alert("新增失敗")
+				}
+			})
+		},
+		editMedItems : function() {
+			var vm = this
+			var JSONMedItems = vm.newMed
+			var itemid = $("#itemid").val()
+			$.ajax({
+				url : ctx + "VueEditMedItems",
+				type : 'POST',
+				dataType : 'json',
+				contentType : 'application/json;charset=UTF-8',
+				beforeSend : function(xhr) {
+					xhr.setRequestHeader(header, token)
+				},
+				data : JSON.stringify({
+					JSONobject : JSONMedItems,
+					itemid: itemid
 				}),
 				success : function(data) {
 					if (data == true) {

@@ -4,14 +4,13 @@ $(function() {
 				var company = $("#company").val();
 				var token = $("meta[name='_csrf']").attr("content");
 				var header = $("meta[name='_csrf_header']").attr("content");
-				var ctx = window.location.pathname.split("/")[1];
+				var ctx = $("#ctx").val();
 				$
 						.ajax({
+							url :  ctx + "AjaxSelectCompany",
 							type : "POST",
-							url : "/" + ctx + "/AjaxSelectCompany",
 							data : {
 								comName : company
-
 							},
 							dataType : "json",
 							beforeSend : function(xhr) {

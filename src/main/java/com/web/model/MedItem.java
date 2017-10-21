@@ -48,7 +48,7 @@ public class MedItem extends BaseMode {
 
 	@ManyToOne
 	@JoinColumn(name = "FORM_ID", updatable = false, nullable = false)
-	private AccountForm AccountForm;
+	private AccountForm accountform;
 
 	@Column(name = "TOTAL")
 	private int total;
@@ -101,12 +101,12 @@ public class MedItem extends BaseMode {
 		this.discount3 = discount3;
 	}
 
-	public AccountForm getAccountForm() {
-		return AccountForm;
+	public AccountForm getAccountform() {
+		return accountform;
 	}
 
-	public void setAccountForm(AccountForm accountForm) {
-		AccountForm = accountForm;
+	public void setAccountform(AccountForm accountform) {
+		this.accountform = accountform;
 	}
 
 	public int getTotal() {
@@ -137,7 +137,7 @@ public class MedItem extends BaseMode {
 	public String toString() {
 		return "MedItem [company=" + company + ", medicine=" + medicine + ", itemcount=" + itemcount + ", input_cost="
 				+ input_cost + ", discount1=" + discount1 + ", discount2=" + discount2 + ", discount3=" + discount3
-				+ ", AccountForm=" + AccountForm.getOid() + ", total=" + total + "]";
+				+ ", AccountForm=" + accountform.getOid() + ", total=" + total + "]";
 	}
 
 	@Override

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.web.model.AccountForm;
 import com.web.model.Company;
+import com.web.model.MedItem;
 import com.web.model.Medicine;
 import com.web.service.AccountFormService;
 import com.web.service.CompnayService;
@@ -87,18 +88,7 @@ public class FormController {
 	@RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
 	public String updateForm(@PathVariable UUID id, Model model) {
 
-		List<Company> companies = compnayService.getAll();
-		if (companies.size() > 0) {
-			model.addAttribute("companys", companies);
-			List<Medicine> medicines = medService.findAllByCompanyId(companies.get(0).getId());
-			if (medicines != null)
-				model.addAttribute("meds", medicines);
-			else
-				model.addAttribute("meds", "無藥品");
-		} else {
-			model.addAttribute("companys", "無藥廠");
-			model.addAttribute("meds", "無藥品");
-		}
+		SetCompany(model);
 		model.addAttribute("form", Service.findbyOne(id));
 
 		return "/jsp/form/edit";
@@ -115,19 +105,31 @@ public class FormController {
 
 	@RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
 	public String deleteForm(@PathVariable UUID id, Model model) {
-		
+
 		meditService.removebyformId(id);
 		Service.removebyId(id);
 		return "redirect:/form/list";
-		
+
 	}
 
 	@RequestMapping(value = "{fromid}/{medid}/delete", method = RequestMethod.GET)
 	public String deleteMedItem(@PathVariable UUID fromid, @PathVariable UUID medid, Model model) {
-		
+
 		meditService.removebyId(medid);
 		return "redirect:/form/" + fromid + "/items";
+
+	}
+
+	@RequestMapping(value = "{fromid}/{medid}/update", method = RequestMethod.GET)
+	public String ShowUpdateMedItem(@PathVariable UUID fromid, @PathVariable UUID medid, Model model) {
+
+		SetCompany(model);
+		MedItem item = meditService.findbyOne(medid);
+
 		
+		model.addAttribute("item", item);
+
+		return "/jsp/form/update";
 	}
 
 	@RequestMapping(value = "/{id}/exportpdf", method = RequestMethod.GET)
@@ -148,5 +150,20 @@ public class FormController {
 		model.addAttribute("meds", meditService.findbyformId(id));
 
 		return "/jsp/export/EXCELexport";
+	}
+
+	public void SetCompany(Model model) {
+		List<Company> companies = compnayService.getAll();
+		if (companies.size() > 0) {
+			model.addAttribute("companys", companies);
+			List<Medicine> medicines = medService.findAllByCompanyId(companies.get(0).getId());
+			if (medicines != null)
+				model.addAttribute("meds", medicines);
+			else
+				model.addAttribute("meds", "無藥品");
+		} else {
+			model.addAttribute("companys", "無藥廠");
+			model.addAttribute("meds", "無藥品");
+		}
 	}
 }

@@ -14,7 +14,7 @@ public class MedItemDaoImpl extends AbstractGenericDao<MedItem> implements MedIt
 
 	@Override
 	public List<MedItem> findbyformId(UUID id) {
-		String hql = "from MedItem m where m.AccountForm.id = ?";
+		String hql = "from MedItem m where m.accountform.id = ?";
 		Query query = this.getSession().createQuery(hql);
 		query.setParameter(0, id);
 		List<MedItem> list = query.list();

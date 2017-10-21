@@ -1,6 +1,7 @@
 package com.web.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
@@ -32,6 +33,7 @@ import com.web.service.AccountFormService;
 import com.web.service.CompnayService;
 import com.web.service.MedItemService;
 import com.web.service.MedicineService;
+import com.web.ulit.OIDCreater;
 import com.web.vo.JSONmedItem;
 
 @Controller
@@ -106,7 +108,7 @@ public class AppController {
 			AccountForm form = Accountservice.findbyOne(formid);
 			for (JSONmedItem o : list) {
 				MedItem item = new MedItem();
-				item.setAccountForm(form);
+				item.setAccountform(form);
 				item.setMedicine(o.getName());
 				item.setCompany(o.getCompany());
 				item.setInputdate(o.getInputday());
@@ -116,6 +118,7 @@ public class AppController {
 				item.setDiscount2(o.getDiscount2());
 				item.setDiscount3(o.getDiscount3());
 				item.setTotal(o.getTotal());
+				item.setOid(new OIDCreater().getItemOid());
 				meditService.add(item);
 			}
 			return "true";
@@ -123,6 +126,35 @@ public class AppController {
 			return "false";
 		}
 
+	}
+
+	@RequestMapping(value = { "/VueEditMedItems" }, method = RequestMethod.POST, produces = "text/json;charset=UTF-8")
+	@ResponseBody
+	public String VueEditMedItems(@RequestBody String JSONobject) {
+
+		JSONobject = "[" + JSONobject + "]";
+		JSONArray array = JSON.parseArray(JSONobject);
+		String JSONItem = array.getJSONObject(0).get("JSONobject").toString();
+		JSONmedItem JSONitem = JSON.parseObject(JSONItem, new TypeReference<JSONmedItem>() {
+		});
+		UUID itemid = UUID.fromString(array.getJSONObject(0).get("itemid").toString());
+
+		MedItem itemMode = meditService.findbyOne(itemid);
+
+		itemMode.setCompany(JSONitem.getCompany());
+		itemMode.setInput_cost(JSONitem.getCost());
+		itemMode.setDiscount1(JSONitem.getDiscount1());
+		itemMode.setDiscount1(JSONitem.getDiscount2());
+		itemMode.setDiscount1(JSONitem.getDiscount3());
+		itemMode.setInputdate(JSONitem.getInputday());
+		itemMode.setItemcount(JSONitem.getCount());
+		itemMode.setTotal(JSONitem.getTotal());
+		itemMode.setMedicine(JSONitem.getName());
+		itemMode.setUpdateDate(new Date());
+
+		meditService.update(itemMode);
+
+		return "true";
 	}
 
 }
