@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.web.model.AccountForm;
 import com.web.model.Company;
@@ -126,7 +127,6 @@ public class FormController {
 		SetCompany(model);
 		MedItem item = meditService.findbyOne(medid);
 
-		
 		model.addAttribute("item", item);
 
 		return "/jsp/form/update";
@@ -150,6 +150,27 @@ public class FormController {
 		model.addAttribute("meds", meditService.findbyformId(id));
 
 		return "/jsp/export/EXCELexport";
+	}
+
+	@RequestMapping(value = "/{id}/downloadPDF", method = RequestMethod.GET)
+	public ModelAndView downloadExcel(@PathVariable UUID id) {
+		System.out.println("---------------------downloadExcel------------------");
+		// create some sample data
+		// List<Book> listBooks = new ArrayList<Book>();
+		// listBooks.add(new Book("Spring in Action", "Craig Walls",
+		// "1935182358",
+		// "June 29th 2011", 31.98F));
+		// listBooks.add(new Book("Spring in Practice", "Willie Wheeler, Joshua
+		// White",
+		// "1935182056", "May 16th 2013", 31.95F));
+		// listBooks.add(new Book("Pro Spring 3",
+		// "Clarence Ho, Rob Harrop", "1430241071", "April 18th 2012", 31.85F));
+		// listBooks.add(new Book("Spring Integration in Action", "Mark Fisher",
+		// "1935182439",
+		// "September 26th 2012", 28.73F));
+
+		// return a view which will be resolved by an excel view resolver
+		return new ModelAndView("pdfView", "listBooks", "");
 	}
 
 	public void SetCompany(Model model) {
