@@ -1,5 +1,6 @@
 package com.web.controller;
 
+import java.text.Normalizer.Form;
 import java.util.List;
 import java.util.UUID;
 
@@ -154,23 +155,10 @@ public class FormController {
 
 	@RequestMapping(value = "/{id}/downloadPDF", method = RequestMethod.GET)
 	public ModelAndView downloadExcel(@PathVariable UUID id) {
-		System.out.println("---------------------downloadExcel------------------");
-		// create some sample data
-		// List<Book> listBooks = new ArrayList<Book>();
-		// listBooks.add(new Book("Spring in Action", "Craig Walls",
-		// "1935182358",
-		// "June 29th 2011", 31.98F));
-		// listBooks.add(new Book("Spring in Practice", "Willie Wheeler, Joshua
-		// White",
-		// "1935182056", "May 16th 2013", 31.95F));
-		// listBooks.add(new Book("Pro Spring 3",
-		// "Clarence Ho, Rob Harrop", "1430241071", "April 18th 2012", 31.85F));
-		// listBooks.add(new Book("Spring Integration in Action", "Mark Fisher",
-		// "1935182439",
-		// "September 26th 2012", 28.73F));
-
+		AccountForm form = Service.findbyOne(id);
+		form.setMedItems(meditService.findbyformId(id));
 		// return a view which will be resolved by an excel view resolver
-		return new ModelAndView("pdfView", "listBooks", "");
+		return new ModelAndView("pdfView", "form", form);
 	}
 
 	public void SetCompany(Model model) {

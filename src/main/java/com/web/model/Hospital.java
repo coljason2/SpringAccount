@@ -50,7 +50,7 @@ public class Hospital extends BaseMode {
 
 	@Override
 	public String toString() {
-		return "Hospital [hos_name=" + hos_name + ", AccountFroms=" + AccountFroms + ", id=" + id + "]";
+		return "Hospital [hos_name=" + hos_name + ", id=" + id + "]";
 	}
 
 	@Override
