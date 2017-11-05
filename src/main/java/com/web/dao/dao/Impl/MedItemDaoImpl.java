@@ -26,7 +26,7 @@ public class MedItemDaoImpl extends AbstractGenericDao<MedItem> implements MedIt
 
 	@Override
 	public void removebyformId(UUID id) {
-		String hql = "delete from MedItem m where m.AccountForm.id = ?";
+		String hql = "delete from MedItem m where m.accountform.id = ?";
 		Query query = this.getSession().createQuery(hql);
 		query.setParameter(0, id);
 		query.executeUpdate();

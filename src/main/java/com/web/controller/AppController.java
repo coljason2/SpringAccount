@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
@@ -35,8 +34,6 @@ import com.web.service.MedItemService;
 import com.web.service.MedicineService;
 import com.web.ulit.OIDCreater;
 import com.web.vo.JSONmedItem;
-
-
 
 @Controller
 @RequestMapping("/")
@@ -80,13 +77,13 @@ public class AppController {
 	@ResponseBody
 	public List<String> AjaxSelectCompany(String comName) {
 
-		Log.info("comName = {} " + comName);
+		Log.info("--------------------comName = {} ---------------------------------" + comName);
 		List<Medicine> meds = medService.findAllByCompanyName(comName);
 		List<String> name = new ArrayList<String>();
+
 		if (meds != null)
 			for (Medicine s : meds)
 				name.add(s.getMed_name());
-
 		if (name.size() != 0) {
 			return name;
 		} else {
@@ -161,5 +158,5 @@ public class AppController {
 
 		return "true";
 	}
-	
+
 }
