@@ -3,6 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
+<link rel="icon" type="image/x-icon"
+	href="<c:url value="/favicon.ico" />" />
 <style>
 html {
 	background-color: #2F2F2F;

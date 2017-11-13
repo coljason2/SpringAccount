@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -34,6 +36,16 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/decorators/**").addResourceLocations("/decorators/");
 	}
 
+	
+	@Controller
+    static class FaviconController {
+        @RequestMapping("favicon.ico")
+        String favicon() {
+            return "forward:/resources/favicon.ico";
+        }
+    }
+	
+	
 	/**
 	 * Configure ViewResolvers to deliver preferred views.
 	 */

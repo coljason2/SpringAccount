@@ -12,7 +12,7 @@
 	<%@include file="nav.jsp"%>
 	<div class="container">
 		<!-- <div class="generic-container"> -->
-			<dec:body />
+		<dec:body />
 		<!-- </div> -->
 	</div>
 </body>
