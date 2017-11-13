@@ -40,6 +40,8 @@ public class CompanyController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView listCompany(ModelAndView model) {
+		if (compnayService.getAll().size() == 0)
+			initialCompany();
 
 		model = new ModelAndView("/jsp/company/list");
 		model.addObject("coms", compnayService.getAll());
@@ -114,4 +116,13 @@ public class CompanyController {
 
 		return "redirect:/company/" + com_id + "/show";
 	}
+
+	private void initialCompany() {
+		compnayService.add(new Company("信輝"));
+		compnayService.add(new Company("信東"));
+		compnayService.add(new Company("中化"));
+		compnayService.add(new Company("裕利"));
+		compnayService.add(new Company("大昌"));
+	}
+
 }

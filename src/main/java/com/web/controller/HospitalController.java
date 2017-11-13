@@ -34,6 +34,8 @@ public class HospitalController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listHospital(ModelMap model) {
+		if (service.getAll().size() == 0)
+			initialHospital();
 
 		model.addAttribute("hosptials", service.getAll());
 		return "/jsp/hospital/list";
@@ -96,5 +98,11 @@ public class HospitalController {
 		;
 
 		return "redirect:/hospital/list";
+	}
+
+	private void initialHospital() {
+		service.add(new Hospital("仁愛醫院"));
+		service.add(new Hospital("普門醫院"));
+		service.add(new Hospital("普門診所"));
 	}
 }

@@ -34,6 +34,14 @@ public class Company extends BaseMode {
 	@JoinColumn(name = "COMPANY_ID")
 	private List<Medicine> Medicines;
 
+	public Company(String string) {
+		com_name = string;
+	}
+
+	public Company() {
+		super();
+	}
+
 	public String getCom_name() {
 		return com_name;
 	}

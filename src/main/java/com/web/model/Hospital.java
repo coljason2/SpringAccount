@@ -32,6 +32,14 @@ public class Hospital extends BaseMode {
 	@Column(name = "HOSPITAL_ID")
 	private List<AccountForm> AccountFroms;
 
+	public Hospital(String string) {
+		hos_name = string;
+	}
+
+	public Hospital() {
+		super();
+	}
+
 	public String getHos_name() {
 		return hos_name;
 	}

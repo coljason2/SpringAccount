@@ -17,6 +17,10 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.web.dao.CompanyDao;
+import com.web.dao.HospitalDao;
+import com.web.dao.MedicineDao;
+
 @Configuration
 @EnableTransactionManagement
 @ComponentScan({ "com.web.config" })
@@ -25,6 +29,7 @@ public class HibernateConfiguration {
 
 	@Autowired
 	private Environment environment;
+
 
 	@Bean
 	public LocalSessionFactoryBean sessionFactory() {
