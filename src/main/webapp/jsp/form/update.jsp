@@ -45,7 +45,8 @@
 						<option value="${companys}">${companys}</option>
 						<input type="hidden" id="firstCompany" value="${companys}" />
 					</c:if>
-				</select> <label>藥品：</label> <select id="medicine" v-model="newMed.name">
+				</select> 
+				<label>藥品：</label> <select id="medicine" v-model="newMed.name">
 					<c:if test="${meds != '無藥品'}">
 						<c:forEach items="${meds}" var="m">
 							<option value="${m.med_name}">${m.med_name}</option>
