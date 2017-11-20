@@ -1,5 +1,8 @@
 package com.web.model;
 
+import java.text.DateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.AttributeOverride;
@@ -34,6 +37,8 @@ public class Hospital extends BaseMode {
 
 	public Hospital(String string) {
 		hos_name = string;
+		setCreateDate(new Date());
+		setUpdateDate(new Date());
 	}
 
 	public Hospital() {

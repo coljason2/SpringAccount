@@ -19,6 +19,7 @@ import com.web.model.Company;
 import com.web.model.Medicine;
 import com.web.service.CompnayService;
 import com.web.service.MedicineService;
+import com.web.vo.GenerateFactory;
 
 @Controller
 @RequestMapping("/company")
@@ -28,9 +29,9 @@ public class CompanyController {
 
 	@Autowired
 	CompnayService compnayService;
-
 	@Autowired
 	MedicineService medService;
+	GenerateFactory GenerateFactory = new GenerateFactory();
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView listCompany(ModelAndView model) {
@@ -38,7 +39,7 @@ public class CompanyController {
 			initialCompany();
 
 		model = new ModelAndView("/jsp/company/list");
-		model.addObject("coms", compnayService.getAll());
+		model.addObject("coms", GenerateFactory.getCompanys());
 
 		return model;
 	}

@@ -1,5 +1,6 @@
 package com.web.model;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.AttributeOverride;
@@ -36,6 +37,9 @@ public class Company extends BaseMode {
 
 	public Company(String string) {
 		com_name = string;
+		setCreateDate(new Date());
+		setUpdateDate(new Date());
+	
 	}
 
 	public Company() {

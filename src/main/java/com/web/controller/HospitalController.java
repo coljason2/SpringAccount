@@ -5,7 +5,6 @@ import java.util.UUID;
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
-import org.h2.util.New;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.web.model.Hospital;
 import com.web.service.AccountFormService;
 import com.web.service.HospitalService;
+import com.web.vo.GenerateFactory;
 
 @Controller
 @RequestMapping("/hospital")
@@ -28,16 +28,16 @@ public class HospitalController {
 
 	@Autowired
 	HospitalService service;
-
 	@Autowired
 	AccountFormService AccService;
+	GenerateFactory GenerateFactory = new GenerateFactory();
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listHospital(ModelMap model) {
 		if (service.getAll().size() == 0)
 			initialHospital();
 
-		model.addAttribute("hosptials", service.getAll());
+		model.addAttribute("hosptials", GenerateFactory.getHospitals());
 		return "/jsp/hospital/list";
 	}
 
