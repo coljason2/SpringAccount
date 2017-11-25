@@ -28,7 +28,7 @@ public class Company extends BaseMode {
 
 	@NotNull(message = "藥廠名稱不能為空白!")
 	@NotEmpty(message = "藥廠名稱不能為空白!")
-	@Column(name = "COM_NAME", nullable = false)
+	@Column(name = "COM_NAME", nullable = false ,unique = true)
 	private String com_name;
 
 	@OneToMany

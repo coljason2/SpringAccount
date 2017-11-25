@@ -31,15 +31,12 @@ public class CompanyController {
 	CompnayService compnayService;
 	@Autowired
 	MedicineService medService;
-	GenerateFactory GenerateFactory = new GenerateFactory();
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView listCompany(ModelAndView model) {
-		if (compnayService.getAll().size() == 0)
-			initialCompany();
-
+		
 		model = new ModelAndView("/jsp/company/list");
-		model.addObject("coms", GenerateFactory.getCompanys());
+		model.addObject("coms", compnayService.getAll());
 
 		return model;
 	}
@@ -110,14 +107,6 @@ public class CompanyController {
 		medService.removebyId(med_id);
 
 		return "redirect:/company/" + com_id + "/show";
-	}
-
-	private void initialCompany() {
-		compnayService.add(new Company("信輝"));
-		compnayService.add(new Company("信東"));
-		compnayService.add(new Company("中化"));
-		compnayService.add(new Company("裕利"));
-		compnayService.add(new Company("大昌"));
 	}
 
 }

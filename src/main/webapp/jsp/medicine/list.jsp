@@ -19,6 +19,7 @@
 				<tr>
 					<th>ID</th>
 					<th>藥品名稱</th>
+					<th>健保碼</th>
 					<th>藥廠</th>
 					<th>產生日期</th>
 					<th>更新日期</th>
@@ -29,6 +30,7 @@
 				<tr>
 					<td>${status.index}</td>
 					<td>${meds.med_name}</td>
+					<td>${meds.med_no_id}</td>
 					<td>${meds.company.com_name}</td>
 					<td>${meds.createDate}</td>
 					<td>${meds.updateDate}</td>

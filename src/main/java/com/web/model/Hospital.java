@@ -28,7 +28,7 @@ public class Hospital extends BaseMode {
 
 	@NotNull(message = "醫院名稱不能為空值")
 	@NotEmpty(message = "醫院名稱不能為空白")
-	@Column(name = "HOS_NAME", nullable = false)
+	@Column(name = "HOS_NAME", nullable = false ,unique = true)
 	private String hos_name;
 
 	@OneToMany

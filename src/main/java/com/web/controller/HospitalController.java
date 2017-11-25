@@ -30,14 +30,11 @@ public class HospitalController {
 	HospitalService service;
 	@Autowired
 	AccountFormService AccService;
-	GenerateFactory GenerateFactory = new GenerateFactory();
-
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listHospital(ModelMap model) {
-		if (service.getAll().size() == 0)
-			initialHospital();
 
-		model.addAttribute("hosptials", GenerateFactory.getHospitals());
+		model.addAttribute("hosptials",service.getAll());
 		return "/jsp/hospital/list";
 	}
 

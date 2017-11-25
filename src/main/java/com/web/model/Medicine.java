@@ -24,9 +24,12 @@ public class Medicine extends BaseMode {
 	 */
 	private static final long serialVersionUID = 2001463843075946122L;
 
-	@Column(name = "NAME", nullable = false)
+	@Column(name = "NAME", nullable = false, unique = true)
 	private String med_name;
 
+	@Column(name = "NUMBER_ID", nullable = true, unique = true)
+	private String med_no_id;
+	
 	@ManyToOne
 	@JoinColumn(name = "COMPANY_ID")
 	private Company company;
@@ -53,6 +56,14 @@ public class Medicine extends BaseMode {
 
 	public void setCompany(Company company) {
 		this.company = company;
+	}
+
+	public String getMed_no_id() {
+		return med_no_id;
+	}
+
+	public void setMed_no_id(String med_no_id) {
+		this.med_no_id = med_no_id;
 	}
 
 	@Override
