@@ -83,9 +83,11 @@ public class PDFBuilder extends AbstractITextPdfView {
 		int FormTotal = 0;
 		// write table row data
 		for (MedItem MedItem : listMedItems) {
-			table.addCell(MedItem.getCompany());
+			cell.setPhrase(new Phrase(MedItem.getCompany(), ChFont));
+			table.addCell(cell);
 			table.addCell(MedItem.getInputdate());
-			table.addCell(MedItem.getMedicine());
+			cell.setPhrase(new Phrase(MedItem.getMedicine(), ChFont));
+			table.addCell(cell);
 			table.addCell(String.valueOf(nf.format(MedItem.getItemcount())));
 			table.addCell(String.valueOf(nf.format(MedItem.getInput_cost())));
 			table.addCell(String.valueOf(nf.format(MedItem.getDiscount1())));

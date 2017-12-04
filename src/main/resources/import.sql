@@ -50,7 +50,6 @@ insert into APP_MEDICINE (MEDICINE_ID,CRE_DATE,OID,UP_DATE,VERSION,NAME,NUMBER_I
 insert into APP_MEDICINE (MEDICINE_ID,CRE_DATE,OID,UP_DATE,VERSION,NAME,NUMBER_ID,COMPANY_ID) values (uuid(),now(),uuid(),now(),1,'痘膚潤50MG', null , @comid );
 insert into APP_MEDICINE (MEDICINE_ID,CRE_DATE,OID,UP_DATE,VERSION,NAME,NUMBER_ID,COMPANY_ID) values (uuid(),now(),uuid(),now(),1,'痘膚潤15M', null , @comid );
 insert into APP_MEDICINE (MEDICINE_ID,CRE_DATE,OID,UP_DATE,VERSION,NAME,NUMBER_ID,COMPANY_ID) values (uuid(),now(),uuid(),now(),1,'高糖優適錠50MG', null , @comid );
-insert into APP_MEDICINE (MEDICINE_ID,CRE_DATE,OID,UP_DATE,VERSION,NAME,NUMBER_ID,COMPANY_ID) values (uuid(),now(),uuid(),now(),1,'利飛亞', null , @comid );
 insert into APP_MEDICINE (MEDICINE_ID,CRE_DATE,OID,UP_DATE,VERSION,NAME,NUMBER_ID,COMPANY_ID) values (uuid(),now(),uuid(),now(),1,'雅施達錠', null , @comid );
 insert into APP_MEDICINE (MEDICINE_ID,CRE_DATE,OID,UP_DATE,VERSION,NAME,NUMBER_ID,COMPANY_ID) values (uuid(),now(),uuid(),now(),1,'喜克脂', null , @comid );
 insert into APP_MEDICINE (MEDICINE_ID,CRE_DATE,OID,UP_DATE,VERSION,NAME,NUMBER_ID,COMPANY_ID) values (uuid(),now(),uuid(),now(),1,'愛爾康柔膠15MG', null , @comid );
