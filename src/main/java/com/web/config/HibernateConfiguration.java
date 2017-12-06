@@ -1,11 +1,11 @@
 package com.web.config;
 
+import java.io.File;
 import java.util.Properties;
 
 import javax.sql.DataSource;
 
 import org.hibernate.SessionFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -17,15 +17,12 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import com.web.dao.CompanyDao;
-import com.web.dao.HospitalDao;
-import com.web.dao.MedicineDao;
-
 @Configuration
 @EnableTransactionManagement
 @ComponentScan({ "com.web.config" })
 @PropertySource(value = { "classpath:application.properties", "classpath:import.sql" })
 public class HibernateConfiguration {
+	private static final String jdbcurl = "jdbc:h2:tcp://localhost/" + new File("").getAbsolutePath() + "\\AccountDB";
 
 	@Autowired
 	private Environment environment;
@@ -41,9 +38,10 @@ public class HibernateConfiguration {
 
 	@Bean
 	public DataSource dataSource() {
+		System.out.println(jdbcurl);
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
-		dataSource.setUrl(environment.getRequiredProperty("jdbc.url"));
+		dataSource.setUrl(jdbcurl);
 		dataSource.setUsername(environment.getRequiredProperty("jdbc.username"));
 		dataSource.setPassword(environment.getRequiredProperty("jdbc.password"));
 		return dataSource;
