@@ -36,16 +36,14 @@ public class AppConfig extends WebMvcConfigurerAdapter {
 		registry.addResourceHandler("/decorators/**").addResourceLocations("/decorators/");
 	}
 
-	
 	@Controller
-    static class FaviconController {
-        @RequestMapping("favicon.ico")
-        String favicon() {
-            return "forward:/resources/favicon.ico";
-        }
-    }
-	
-	
+	static class FaviconController {
+		@RequestMapping("favicon.ico")
+		String favicon() {
+			return "forward:/resources/favicon.ico";
+		}
+	}
+
 	/**
 	 * Configure ViewResolvers to deliver preferred views.
 	 */

@@ -1,4 +1,4 @@
-package com.web.ulit;
+package com.other;
 
 import java.util.Calendar;
 
@@ -17,6 +17,11 @@ public class OIDCreater {
 	public String getItemOid() {
 		Long now = cal.getTime().getTime();
 		oid = prex + item + now;
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		return oid;
 	}
 }

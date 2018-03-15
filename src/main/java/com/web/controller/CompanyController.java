@@ -14,12 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.web.model.Company;
 import com.web.model.Medicine;
 import com.web.service.CompnayService;
 import com.web.service.MedicineService;
-import com.web.vo.GenerateFactory;
 
 @Controller
 @RequestMapping("/company")

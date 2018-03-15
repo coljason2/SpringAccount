@@ -67,7 +67,6 @@ public abstract class AbstractGenericDao<T extends BaseMode> implements GenericD
 	}
 
 	public List<T> findAll() {
-		logger.info("DAO findAll()");
 		return getSession().createQuery("from " + Entity.getName()).list();
 	}
 

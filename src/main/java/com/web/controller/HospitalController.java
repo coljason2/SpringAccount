@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.web.model.Hospital;
 import com.web.service.AccountFormService;
 import com.web.service.HospitalService;
-import com.web.vo.GenerateFactory;
 
 @Controller
 @RequestMapping("/hospital")
@@ -30,11 +29,11 @@ public class HospitalController {
 	HospitalService service;
 	@Autowired
 	AccountFormService AccService;
-	
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String listHospital(ModelMap model) {
 
-		model.addAttribute("hosptials",service.getAll());
+		model.addAttribute("hosptials", service.getAll());
 		return "/jsp/hospital/list";
 	}
 

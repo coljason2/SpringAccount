@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.TypeReference;
+import com.other.OIDCreater;
 import com.web.model.AccountForm;
 import com.web.model.Company;
 import com.web.model.MedItem;
@@ -32,7 +33,6 @@ import com.web.service.AccountFormService;
 import com.web.service.CompnayService;
 import com.web.service.MedItemService;
 import com.web.service.MedicineService;
-import com.web.ulit.OIDCreater;
 import com.web.vo.JSONmedItem;
 
 @Controller

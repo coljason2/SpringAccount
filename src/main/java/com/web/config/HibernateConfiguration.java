@@ -2,9 +2,7 @@ package com.web.config;
 
 import java.io.File;
 import java.util.Properties;
-
 import javax.sql.DataSource;
-
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,7 +39,7 @@ public class HibernateConfiguration {
 
 	@Bean
 	public DataSource dataSource() {
-		logger.info("jdbcurl =  {} ", jdbcurl);
+		//logger.info("jdbcurl =  {} ", jdbcurl);
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driverClassName"));
 		// dataSource.setUrl(jdbcurl);

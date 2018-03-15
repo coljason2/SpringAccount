@@ -1,9 +1,6 @@
 package com.web.controller;
-
-import java.text.Normalizer.Form;
 import java.util.List;
 import java.util.UUID;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
-
+import com.other.AccDateGenerate;
+import com.other.OIDCreater;
 import com.web.model.AccountForm;
 import com.web.model.Company;
 import com.web.model.MedItem;
@@ -25,8 +23,6 @@ import com.web.service.CompnayService;
 import com.web.service.HospitalService;
 import com.web.service.MedItemService;
 import com.web.service.MedicineService;
-import com.web.ulit.AccDateGenerate;
-import com.web.ulit.OIDCreater;
 
 @Controller
 @RequestMapping("/form")
