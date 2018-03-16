@@ -1,12 +1,14 @@
 package com.other;
 
 import java.util.Calendar;
+import java.util.Random;
 
 public class OIDCreater {
 	final static String prex = "OID";
 	final static String item = "ITEM";
 	String oid;
 	Calendar cal = Calendar.getInstance();
+	Random random = new Random();
 
 	public String getOid() {
 		Long now = cal.getTime().getTime();
@@ -15,13 +17,10 @@ public class OIDCreater {
 	}
 
 	public String getItemOid() {
-		Long now = cal.getTime().getTime();
+		Long now = cal.getTime().getTime() + random.nextInt();
+
 		oid = prex + item + now;
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+
 		return oid;
 	}
 }

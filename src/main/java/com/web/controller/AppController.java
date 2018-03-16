@@ -26,7 +26,6 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.TypeReference;
 import com.other.OIDCreater;
 import com.web.model.AccountForm;
-import com.web.model.Company;
 import com.web.model.MedItem;
 import com.web.model.Medicine;
 import com.web.service.AccountFormService;
@@ -77,7 +76,7 @@ public class AppController {
 	@ResponseBody
 	public List<String> AjaxSelectCompany(String comName) {
 
-		Log.info("--------------------comName = {} ---------------------------------" + comName);
+		//Log.info("--------------------comName = {} ---------------------------------" + comName);
 		List<Medicine> meds = medService.findAllByCompanyName(comName);
 		List<String> name = new ArrayList<String>();
 

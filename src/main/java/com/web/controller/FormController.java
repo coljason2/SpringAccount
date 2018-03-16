@@ -1,4 +1,5 @@
 package com.web.controller;
+
 import java.util.List;
 import java.util.UUID;
 import org.apache.log4j.Logger;
@@ -45,7 +46,6 @@ public class FormController {
 	public String listForm(ModelMap model) {
 
 		List<AccountForm> forms = Service.getAll();
-		Log.info(forms.toString());
 		model.addAttribute("forms", forms);
 		return "/jsp/form/list";
 	}
